@@ -25,3 +25,6 @@ alias gp='git push'
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE
+
+# source collection of useful custom packages
+source /home/njk/nifty_nodes/ws/devel/setup.bash
