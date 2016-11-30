@@ -4,6 +4,7 @@ alias rsnm='sudo service network-manager restart'
 
 # because source devel/setup.bash is way too much typing:
 alias src='source devel/setup.bash'
+alias srco='source /opt/ros/indigo/setup.bash'
 
 # aliases for rapidly moving to course directories:
 alias 314='cd ~/Courses/ME314/'
