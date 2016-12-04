@@ -2,6 +2,10 @@
 # a bug and it always needs restarting:
 alias rsnm='sudo service network-manager restart'
 
+# alias to open a nautilus window at the current terminal's directory,
+# because, you know, sometimes GUIs are actually useful
+alias ocd='nautilus $(pwd)'
+
 # because source devel/setup.bash is way too much typing:
 alias src='source devel/setup.bash'
 alias srco='source /opt/ros/indigo/setup.bash'
