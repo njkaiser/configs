@@ -15,6 +15,9 @@ alias 314='cd ~/Courses/ME314/'
 alias 449='cd ~/Courses/ME449/'
 alias 469='cd ~/Courses/EECS469/'
 alias 495='cd ~/Courses/ME495/'
+alias 333='cd ~/Courses/ME333/'
+alias 369='cd ~/Courses/EECS369/'
+alias 432='cd ~/Courses/EECS432/'
 
 # things I literally copied from Jarvis:
 alias go='xdg-open'
