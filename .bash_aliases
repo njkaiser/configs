@@ -2,6 +2,10 @@
 # a bug and it always needs restarting:
 alias rsnm='sudo service network-manager restart'
 
+# aliases for updating/upgrading packages:
+alias ud='sudo apt-get update'
+alias ug='sudo apt-get upgrade'
+
 # alias to open a nautilus window at the current terminal's directory,
 # because, you know, sometimes GUIs are actually useful
 alias owd='nautilus $(pwd)'
