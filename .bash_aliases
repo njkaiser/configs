@@ -15,13 +15,13 @@ alias src='source devel/setup.bash'
 alias srco='source /opt/ros/indigo/setup.bash'
 
 # aliases for rapidly moving to course directories:
-alias 314='cd ~/Courses/ME314; pwd; ll;/'
-alias 449='cd ~/Courses/ME449; pwd; ll;/'
-alias 469='cd ~/Courses/EECS469; pwd; ll;/'
-alias 495='cd ~/Courses/ME495; pwd; ll;/'
-alias 333='cd ~/Courses/ME333; pwd; ll;/'
-alias 369='cd ~/Courses/EECS369; pwd; ll;/'
-alias 432='cd ~/Courses/EECS432; pwd; ll;/'
+alias 314='cd ~/Courses/ME314; pwd; ll;'
+alias 449='cd ~/Courses/ME449; pwd; ll;'
+alias 469='cd ~/Courses/EECS469; pwd; ll;'
+alias 495='cd ~/Courses/ME495; pwd; ll;'
+alias 333='cd ~/Courses/ME333; pwd; ll;'
+alias 369='cd ~/Courses/EECS369; pwd; ll;'
+alias 432='cd ~/Courses/EECS432; pwd; ll;'
 alias W='cd ~/Courses/Winter_Project/ws/; pwd; ll;'
 
 # things I literally copied from Jarvis:
