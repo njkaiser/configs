@@ -40,4 +40,4 @@ PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE
 
 # source collection of useful custom packages
-source /home/njk/nifty_nodes/ws/devel/setup.bash
+# source /home/njk/nifty_nodes/ws/devel/setup.bash
