@@ -1,3 +1,7 @@
+# this needs to be sourced before other workspaces are sourced
+# other workspaces sourced in .bash_aliases file
+source /opt/ros/indigo/setup.bash
+
 # alias to restart network manager, since there's
 # a bug and it always needs restarting:
 alias rsnm='sudo service network-manager restart'
@@ -41,3 +45,10 @@ export PYTHONDONTWRITEBYTECODE
 
 # source collection of useful custom packages
 # source /home/njk/nifty_nodes/ws/devel/setup.bash
+
+# set bash completion to be case insensitive (from Jarvis)
+bind 'set completion-ignore-case on'
+
+# add syntax color and piping to less
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS=" -R "
