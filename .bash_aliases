@@ -35,9 +35,12 @@ alias go='xdg-open'
 alias gf='git fetch'
 alias gm='git merge origin/master'
 alias gs='git status'
-alias ga='git add -A'
-alias gc='git commit -am '
+alias gaa='git add -A'
+alias gau='git add -u'
+alias gc='git commit -m '
 alias gp='git push'
+
+alias rl='roslaunch ' # why should I have to type out 'rosla'? way too many keystrokes...
 
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
