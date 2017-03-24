@@ -2,8 +2,8 @@
 # other workspaces sourced in .bash_aliases file
 source /opt/ros/indigo/setup.bash
 
-# alias to restart network manager, since there's
-# a bug and it always needs restarting:
+# alias to restart network manager, since there's a
+# bug and it always needs restarting on my desktop:
 alias rsnm='sudo service network-manager restart'
 
 # aliases for updating/upgrading packages:
@@ -20,13 +20,17 @@ alias srco='source /opt/ros/indigo/setup.bash'
 
 # aliases for rapidly moving to course directories:
 alias 314='cd ~/Courses/ME314; pwd; ll;'
-alias 449='cd ~/Courses/ME449; pwd; ll;'
-alias 469='cd ~/Courses/EECS469; pwd; ll;'
-alias 495='cd ~/Courses/ME495; pwd; ll;'
 alias 333='cd ~/Courses/ME333; pwd; ll;'
+alias 349='cd ~/Courses/EECS349; pwd; ll;'
+alias 358='cd ~/Courses/EECS358; pwd; ll;'
 alias 369='cd ~/Courses/EECS369; pwd; ll;'
 alias 432='cd ~/Courses/EECS432; pwd; ll;'
-alias W='cd ~/Courses/Winter_Project/ws/; pwd; ll;'
+alias 449='cd ~/Courses/ME449; pwd; ll;'
+alias 454='cd ~/Courses/ME454; pwd; ll;'
+alias 469='cd ~/Courses/EECS469; pwd; ll;'
+alias 495='cd ~/Courses/ME495; pwd; ll;'
+alias W='cd ~/Courses/Winter_Project/; pwd; ll;'
+alias F='cd ~/Courses/Final_Project/; pwd; ll;'
 
 # things I literally copied from Jarvis:
 alias go='xdg-open'
@@ -40,7 +44,8 @@ alias gau='git add -u'
 alias gc='git commit -m '
 alias gp='git push'
 
-alias rl='roslaunch ' # why should I have to type out 'rosla'? way too many keystrokes...
+# why should I have to type out 'rosla'? way too many keystrokes...
+alias rl='roslaunch '
 
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
