@@ -1,6 +1,12 @@
 # this needs to be sourced before other workspaces are sourced
 # other workspaces sourced in .bash_aliases file
-source /opt/ros/indigo/setup.bash
+if [ -d /opt/ros/kinetic/ ] ; then
+  source /opt/ros/kinetic/setup.bash
+# elif [new condition]
+else
+  source /opt/ros/indigo/setup.bash
+fi
+
 
 # alias to restart network manager, since there's a
 # bug and it always needs restarting on my desktop:
