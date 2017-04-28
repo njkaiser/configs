@@ -37,8 +37,20 @@ alias 495='cd ~/Courses/ME495; pwd; ll;'
 alias W='cd ~/Courses/Winter_Project/; pwd; ll;'
 alias F='cd ~/Courses/Final_Project/; pwd; ll;'
 
-# things I literally copied from Jarvis:
+# open stuff with default program (copied from Jarvis):
 alias go='xdg-open'
+
+# make nano automatically open with sudo when necessary (copied from Jarvis):
+function nano() {
+  nano=`which nano`;
+  if ([ -e "$1" ] && ! [ -w "$1" ]) || ( ! [ -e "$1" ] && ! [ -w "`dirname $1`" ]);
+  then
+    read -n 1 -p "$1 is not editable by you. sudo [y/n]? " y
+    [ "$y" == "y" ] || [ "$y" == "Y" ] && echo -e "\n" && sudo $nano $@
+  else
+    $nano $@
+  fi
+}
 
 # git commands that are just the right length that you have to type out almost the entire word:
 alias gf='git fetch'
