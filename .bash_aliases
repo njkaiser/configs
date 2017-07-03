@@ -17,7 +17,7 @@ alias ug='sudo apt-get upgrade'
 
 # alias to open a nautilus window at the current terminal's directory,
 # because, you know, sometimes GUIs are actually useful
-alias owd='nautilus $(pwd)'
+alias owd='nautilus $(pwd) &'
 
 # because source devel/setup.bash is way too much typing:
 alias src='source devel/setup.bash'
