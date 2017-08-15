@@ -1,9 +1,10 @@
 # this needs to be sourced before other workspaces are sourced
 if [ -d /opt/ros/kinetic/ ] ; then
   source /opt/ros/kinetic/setup.bash
-# elif [new condition]
-else
+elif [ -d /opt/ros/indigo/ ] ; then
   source /opt/ros/indigo/setup.bash
+else
+  echo 'INFO: no versions of ROS found in /opt/'
 fi
 
 
@@ -60,7 +61,7 @@ alias ga='git add '
 alias gaa='git add -A'
 alias gau='git add -u'
 alias gc='git commit -m '
-alias gp='git push'
+alias gp='git push '
 
 # why should I have to type out 'rosla'? way too many keystrokes...
 alias rl='roslaunch '
@@ -78,3 +79,12 @@ bind 'set completion-ignore-case on'
 # add syntax color and piping to less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
+
+# include git branch & status on command prompt
+if [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+  export GIT_PS1_SHOWDIRTYSTATE=1
+  export GIT_PS1_SHOWUPSTREAM="auto"
+  export GIT_PS1_SHOWCOLORHINTS=1
+  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+fi 
