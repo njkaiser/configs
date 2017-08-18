@@ -31,6 +31,8 @@
 - `]]`	jumps to the next section
 - `[]`	jump to the end of the previous section
 - `][`	jump to the end of the next section
+- `H`	jump to the last line on screen
+- `L`	jump to the first line on screen
 
 #### Insert Mode
 - `i`	start insert mode at cursor
@@ -86,13 +88,16 @@
 - `P`	paste before cursor
 - `dd`	delete (cut) a line
 - `dw`	delete (cut) the current word
+- `daw`	delete (cut) the current word (from any position in the word)
 - `x`	delete (cut) current character
 - `:r`*`filename`*	insert the contents of *filename* below the cursor
 - `:r`*`command`*	execute *command* and insert its output below the cursor
+- `<Ctrl> + y`	(when in insert mode) copy/paste character from line above
 
 #### Search/Replace
 - `/`*`pattern`*	search for *pattern*
 - `?`*`pattern`*	search backward for pattern
+- `*`	search for word under cursor
 - `n`	move to next search instance
 - `N`	move to previous search instance
 - `:%s/old/new/g`	replace all old with new throughout file
@@ -124,3 +129,13 @@
 - `:q!`	quit and throw away changes
 - `ZZ`	same as `:wq`
 - `ZQ`	same as `:q!`
+
+#### Miscellaneous
+- `<Shift> + K`	suspends vim and opens man page for the command under the cursor
+- `<Ctrl> + g`	shows filename, status, # of lines, and percentage of way through buffer
+- `g + <Ctrl> + g`	shows column, line, word, and byte information
+- `<Ctrl> + s`	stops (freezes) VIM
+- `<Ctrl> + q`	resumes (unfreezes) VIM
+- `:%s/`*`pattern`*`//gn`	count number of matches of *pattern*
+- `:%s/`*`pattern`*`//n`	count number of lines that contain a match of *pattern*
+
