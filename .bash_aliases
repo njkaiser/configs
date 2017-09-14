@@ -88,3 +88,7 @@ if [ -f ~/.git-prompt.sh ]; then
   export GIT_PS1_SHOWCOLORHINTS=1
   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 fi 
+
+# set editor to vim for editing commands
+export VISUAL=vim
+export EDITOR=vim
