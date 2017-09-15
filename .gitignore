@@ -1,6 +1,13 @@
+# ignore everything since we're in root directory
 *
 */**
 
+# ignore these files in ALL repos
+*.swp
+*.swo
+*.pyc
+
+# track these files in root
 !.bash_aliases
 !.git-prompt.sh
 !.gitignore
@@ -8,4 +15,5 @@
 !.vimrc
 !README.md
 !peter.vimrc
-
+!/.atom/
+!/.atom/*
