@@ -80,11 +80,41 @@ bind 'set completion-ignore-case on'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
-# include git branch & status on command prompt
-if [ -f ~/.git-prompt.sh ]; then
-  source ~/.git-prompt.sh
-  export GIT_PS1_SHOWDIRTYSTATE=1
-  export GIT_PS1_SHOWUPSTREAM="auto"
-  export GIT_PS1_SHOWCOLORHINTS=1
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$(__git_ps1 " (%s)")\[\033[00m\]\$ '
-fi 
+# # include git branch & status on command prompt
+# if [ -f ~/.git-prompt.sh ]; then
+#   source ~/.git-prompt.sh
+#   export GIT_PS1_SHOWDIRTYSTATE=1
+#   export GIT_PS1_SHOWUPSTREAM="auto"
+#   export GIT_PS1_SHOWCOLORHINTS=1
+#   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+# fi 
+
+# could also use git's built-in function __git_ps1, but it gives no indication of clean or dirty
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit"* ]] && echo "*"
+}
+
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+}
+
+# MYPSDIR_AWK=$(cat << 'EOF'
+# BEGIN { FS = OFS = "/" }
+# { 
+#   if (length($0) > 16 && NF > 3)
+#      print $1,".." NF-2 "..",$(NF-1),$NF
+#    else
+#      print $0
+# }
+# EOF
+# )
+
+# my replacement for \w prompt expansion
+# HOMESYM="~"
+# export MYPSDIR='$(echo -n "${PWD/#$HOME/$HOMESYM}" | awk "$MYPSDIR_AWK")'
+# PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$($(eval 'echo ${MYPSDIR}') ' (%s)')\[\033[00m\]\$ "
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\e[38;5;220m$(parse_git_branch)\[\033[00m\]\$ '
+
+# set editor to vim for editing commands
+export VISUAL=vim
+export EDITOR=vim
