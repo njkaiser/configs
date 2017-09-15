@@ -8,8 +8,7 @@
     softWrap: true
   "exception-reporting":
     userId: "b6e702c4-c042-4969-869e-1a75691421db"
-  "tree-view":
-    hideVcsIgnoredFiles: true
+  "tree-view": {}
   welcome:
     showOnStartup: false
 editor:
