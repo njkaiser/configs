@@ -62,6 +62,8 @@ alias gaa='git add -A'
 alias gau='git add -u'
 alias gc='git commit -m '
 alias gp='git push '
+alias gd='git diff '
+alias gl='git log'
 
 # why should I have to type out 'rosla'? way too many keystrokes...
 alias rl='roslaunch '
