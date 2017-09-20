@@ -12,7 +12,9 @@
 !README.md
 !peter.vimrc
 !/.atom/
-!/.atom/*
+!/.atom/**
 !/install.bash
 !/setup.bash
 !/.tmux.conf
+!/.vim/
+!/.vim/**
