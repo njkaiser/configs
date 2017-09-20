@@ -13,6 +13,7 @@
 !peter.vimrc
 !/.atom/
 !/.atom/**
+/.atom/packages/**
 !/install.bash
 !/setup.bash
 !/.tmux.conf
