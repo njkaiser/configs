@@ -1,32 +1,34 @@
 #!/bin/bash
 
-# TODO: move all files from ~/config/* to ~/*
-
-# first things first
+# first things first:
 sudo apt-get update
 
-# install byobu
+# install byobu:
 sudo apt-get install -y byobu
 
-# install tree
+# install tree:
 sudo apt-get install -y tree
 
-# install vim
+# install vim:
 sudo apt-get install -y vim
 
-# install emacs
+# install emacs:
 sudo apt-get install -y emacs
 
-# install atom
+# install atom:
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update
 sudo apt-get install -y atom
 
-# install ag
+# install ag:
 sudo apt-get install -y silversearcher-ag
 
-# install ack-grep
+# install ack-grep:
 sudo apt-get install -y ack-grep
 
-# install gitk
+# install git:
+sudo apt-get install git
+
+# install gitk:
 sudo apt-get install gitk
+

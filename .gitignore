@@ -2,15 +2,11 @@
 *
 */**
 
-# ignore these files in ALL repos
-*.swp
-*.swo
-*.pyc
-
-# track these files in root
+# and now unignore these files in root
 !.bash_aliases
 !.git-prompt.sh
 !.gitignore
+!.gitignore_global
 !.nanorc
 !.vimrc
 !README.md
@@ -18,4 +14,5 @@
 !/.atom/
 !/.atom/*
 !/install.bash
+!/setup.bash
 !/.tmux.conf
