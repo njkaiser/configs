@@ -68,6 +68,9 @@ alias gl='git log'
 # why should I have to type out 'rosla'? way too many keystrokes...
 alias rl='roslaunch '
 
+# tmux / byobu aliases:
+alias rnw='tmux movew -r'
+
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE
