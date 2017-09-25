@@ -6,3 +6,7 @@
 git config --global core.excludesfile ~/.gitignore_global
 git config --global user.name "Nate Kaiser"
 git config --global user.email "natejkaiser@gmail.com"
+
+# install atom packages:
+apm install minimap
+apm install language-cmake # cmake syntax highlighting
