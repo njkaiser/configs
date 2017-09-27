@@ -9,4 +9,5 @@ git config --global user.email "natejkaiser@gmail.com"
 
 # install atom packages:
 apm install minimap
+apm install hard-wrap # Ctrl-Alt-y wraps lines at 80 characters
 apm install language-cmake # cmake syntax highlighting
