@@ -1,2 +1,5 @@
 'atom-text-editor':
   'ctrl-shift-]': 'editor:auto-indent'
+
+'.platform-linux':
+  'ctrl-.': 'unset!'
