@@ -22,6 +22,7 @@
 !/.vim/**
 !/**/profiles/Default/%gconf.xml
 
+# gnome terminal settings file
 !/.gconf
 /.gconf/*
 !/.gconf/apps/
@@ -33,3 +34,10 @@
 !/.gconf/apps/gnome-terminal/profiles/Default/
 /.gconf/apps/gnome-terminal/profiles/Default/*
 !/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
+
+# unity keyboard shortcut settings file
+!/.config/
+/.config/*
+!/.config/dconf/
+/.config/dconf/*
+!/.config/dconf/user
