@@ -12,6 +12,10 @@ sudo apt-get install -y tree
 # install vim:
 sudo apt-get install -y vim
 
+# install Vundle:
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
 # install emacs:
 sudo apt-get install -y emacs
 
