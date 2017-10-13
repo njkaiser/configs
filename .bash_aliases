@@ -85,6 +85,7 @@ bind 'set completion-ignore-case on'
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
+
 # could also use git's built-in function __git_ps1, but it gives no indication of clean or dirty
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit"* ]] && echo "*"
@@ -96,6 +97,8 @@ function parse_git_branch {
 
 # add git branch/status information to shell prompt:
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;220m\]$(parse_git_branch)\[\033[00m\]\$ '
+# and trim the directory portion to only the last 2:
+PROMPT_DIRTRIM=2 # this only works in bash 4+
 
 # set editor to vim for editing commands
 export VISUAL=vim
