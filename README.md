@@ -33,6 +33,10 @@
 - `][`	jump to the end of the next section
 - `H`	jump to the last line on screen
 - `L`	jump to the first line on screen
+- `<Ctrl> + d`  move down half page
+- `<Ctrl> + u`  move up half page
+- `<Ctrl> + f`  move down whole page (same as Page Down)
+- `<Ctrl> + b`  move up whole page (same as Page Up)
 
 #### Insert Mode
 - `i`	start insert mode at cursor
