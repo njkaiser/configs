@@ -3,6 +3,7 @@ imap kj <Esc>
 set number
 filetype plugin indent on
 set autoindent
+set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -25,6 +26,9 @@ Plugin 'easymotion/vim-easymotion'
 " *** all plugins must be added before the following line
 call vundle#end()         " required
 filetype plugin indent on " required
+
+let g:EasyMotion_do_mapping = 1 " Enable default mappings
+
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
