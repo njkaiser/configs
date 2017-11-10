@@ -62,6 +62,8 @@
 - `<Ctrl> + r`  redo
 - `.`	repeat last command (whole document)
 - `;`	repeat last command (on this line)
+- `<Ctrl> + t`  indent current line (insert mode)
+- `<Ctrl> + d`  unindent current line (insert mode)
 
 #### Marking Text (Visual Mode)
 - `v`	start visual mode, mark lines, then do command (such as y-yank)
@@ -84,7 +86,7 @@
 - `~`	switch case
 
 #### Cut and Paste
-- `yy`	copy (copy) a line
+- `yy`	copy a line
 - `2yy`	copy 2 lines
 - `yw`	copy word
 - `y$`	copy to end of line
