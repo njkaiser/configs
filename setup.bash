@@ -6,6 +6,7 @@
 git config --global core.excludesfile ~/.gitignore_global
 git config --global user.name "Nate Kaiser"
 git config --global user.email "natejkaiser@gmail.com"
+git config --global push.default simple
 
 # install atom packages:
 apm install minimap
