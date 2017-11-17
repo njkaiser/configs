@@ -30,6 +30,9 @@ sudo apt-get install -y silversearcher-ag
 # install ack-grep:
 sudo apt-get install -y ack-grep
 
+# install htop:
+sudo apt-get install htop
+
 # install git:
 sudo apt-get install -y git
 
