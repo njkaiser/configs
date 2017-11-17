@@ -14,3 +14,6 @@ apm install hard-wrap # Ctrl-Alt-y wraps lines at 80 characters
 apm install language-cmake # cmake syntax highlighting
 apm install remote-atom # for working over ssh
 apm install teletype # remote code-sharing for atom
+
+# byobu settings:
+byobu-disable-prompt # replace byobu prompt with normal bash prompt
