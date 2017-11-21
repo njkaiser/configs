@@ -8,6 +8,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set cursorline
+set smartcase " searches are case insensitive unless something in search term is capitalized
 
 " support for roslaunch XML syntax:
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch

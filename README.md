@@ -104,6 +104,10 @@
 - `/`*`pattern`*	search for *pattern*
 - `?`*`pattern`*	search backward for pattern
 - `*`	search for word under cursor
+- `g*`	search for partial word under cursor
+- `<Ctrl> + o`	go forward through jump locations for word under cursor
+- `<Ctrl> + i`	go backward through jump locations for word under cursor
+- `[I`	show lines containing word under cursor
 - `n`	move to next search instance
 - `N`	move to previous search instance
 - `:%s/old/new/g`	replace all old with new throughout file
@@ -145,3 +149,7 @@
 - `:%s/`*`pattern`*`//gn`	count number of matches of *pattern*
 - `:%s/`*`pattern`*`//n`	count number of lines that contain a match of *pattern*
 
+#### Other helpful options
+- `:set ignorecase`	case insensitive search
+- `:set smartcase`	case insensitive search, unless something in search term is capital
+- `:set hlsearch/nohlsearch`	highlight all search terms in document
