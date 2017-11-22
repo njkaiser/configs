@@ -22,13 +22,15 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " *** all plugins must be added after the following line
 
+Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'easymotion/vim-easymotion'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
 filetype plugin indent on " required
-
-let g:EasyMotion_do_mapping = 1 " Enable default mappings
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -43,3 +45,13 @@ let g:EasyMotion_do_mapping = 1 " Enable default mappings
 " Put your non-Plugin stuff after this line
 "
 " THIS IS ALL FOR VUNDLE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+" easymotion config:
+let g:EasyMotion_do_mapping = 1 " Enable default mappings
+
+" Ultisnips config:
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsEditSplit="horizontal"
+

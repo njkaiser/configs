@@ -64,12 +64,13 @@
 - `;`	repeat last command (on this line)
 - `<Ctrl> + t`  indent current line (insert mode)
 - `<Ctrl> + d`  unindent current line (insert mode)
+- `==`  autoindent current line
 
 #### Marking Text (Visual Mode)
 - `v`	start visual mode, mark lines, then do command (such as y-yank)
 - `V`	start linewise visual mode
-- `o`	move to other end of marked area
 - `<Ctrl> + v`	start visual block mode
+- `o`	move to other end of marked area
 - `O`	move to Other corner of block
 - `aw`	mark a word
 - `ab`	a () block (with braces)
@@ -84,6 +85,7 @@
 - `y`	yank (copy) marked text
 - `d`	delete marked text
 - `~`	switch case
+- `=`   autoindent selection
 
 #### Cut and Paste
 - `yy`	copy a line
