@@ -21,6 +21,7 @@
 !/.vim/
 !/.vim/**
 !/**/profiles/Default/%gconf.xml
+!/.bash-settings.dconf
 
 # gnome terminal settings file
 !/.gconf

@@ -54,3 +54,10 @@ sudo apt-get install -y google-chrome-stable
 sudo rm /etc/apt/sources.list.d/google-chrome.list
 rm linux_signing_key.pub
 
+# install dconf (for setting terminal profile preferences):
+# Ubuntu 16.04 ONLY
+if [[ $(lsb_release -rs) == "16.04" ]]; then                                                        
+    sudo apt install dconf-editor
+    dconf load /org/gnome/terminal/ < bash_settings.dconf
+fi
+
