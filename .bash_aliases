@@ -71,6 +71,9 @@ alias rl='roslaunch '
 # tmux / byobu aliases:
 alias rnw='tmux movew -r'
 
+# useful command line aliases:
+alias f='find . -type f -iname '
+
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE

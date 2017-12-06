@@ -61,3 +61,6 @@ if [[ $(lsb_release -rs) == "16.04" ]]; then
     dconf load /org/gnome/terminal/ < bash_settings.dconf
 fi
 
+# install unity and gnome tweak tools:
+sudo apt-get install gnome-tweak-tool
+sudo apt-get install unity-tweak-tool

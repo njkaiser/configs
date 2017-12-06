@@ -19,26 +19,26 @@
 !/setup.bash
 !/.tmux.conf
 !/.vim/
-!/.vim/**
+!/.vim/syntax/
 !/**/profiles/Default/%gconf.xml
 !/.bash-settings.dconf
 
 # gnome terminal settings file
-!/.gconf
-/.gconf/*
-!/.gconf/apps/
-/.gconf/apps/*
-!/.gconf/apps/gnome-terminal/
-/.gconf/apps/gnome-terminal/*
-!/.gconf/apps/gnome-terminal/profiles/
-/.gconf/apps/gnome-terminal/profiles/*
-!/.gconf/apps/gnome-terminal/profiles/Default/
-/.gconf/apps/gnome-terminal/profiles/Default/*
-!/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
+# !/.gconf
+# /.gconf/*
+# !/.gconf/apps/
+# /.gconf/apps/*
+# !/.gconf/apps/gnome-terminal/
+# /.gconf/apps/gnome-terminal/*
+# !/.gconf/apps/gnome-terminal/profiles/
+# /.gconf/apps/gnome-terminal/profiles/*
+# !/.gconf/apps/gnome-terminal/profiles/Default/
+# /.gconf/apps/gnome-terminal/profiles/Default/*
+# !/.gconf/apps/gnome-terminal/profiles/Default/%gconf.xml
 
 # unity keyboard shortcut settings file
-!/.config/
-/.config/*
-!/.config/dconf/
-/.config/dconf/*
-!/.config/dconf/user
+# !/.config/
+# /.config/*
+# !/.config/dconf/
+# /.config/dconf/*
+# !/.config/dconf/user
