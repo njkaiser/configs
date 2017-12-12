@@ -73,3 +73,5 @@ sudo pip install scipy
 sudo pip install matplotlib
 sudo pip install tqdm # awesome status bar package
 
+# necessary for matplotlib:
+sudo apt install -y python-tk
