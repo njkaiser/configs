@@ -57,10 +57,19 @@ rm linux_signing_key.pub
 # install dconf (for setting terminal profile preferences):
 # Ubuntu 16.04 ONLY
 if [[ $(lsb_release -rs) == "16.04" ]]; then                                                        
-    sudo apt install dconf-editor
+    sudo apt install -y dconf-editor
     dconf load /org/gnome/terminal/ < bash_settings.dconf
 fi
 
 # install unity and gnome tweak tools:
-sudo apt-get install gnome-tweak-tool
-sudo apt-get install unity-tweak-tool
+sudo apt-get install -y gnome-tweak-tool
+sudo apt-get install -y unity-tweak-tool
+
+# install pip and all of the python packages I know I'll want:
+sudo apt-get install -y python-pip
+sudo pip install --upgrade pip # do before installing other packages via pip
+sudo pip install numpy
+sudo pip install scipy
+sudo pip install matplotlib
+sudo pip install tqdm # awesome status bar package
+
