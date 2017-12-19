@@ -3,6 +3,9 @@
 # first things first:
 sudo apt-get update
 
+# second things second (apparently cmake isn't installed by default on 16.04?):
+sudo apt-get install -y cmake
+
 # install byobu:
 sudo apt-get install -y byobu
 byobu-disable-prompt # replace byobu prompt with normal bash prompt
