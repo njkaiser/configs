@@ -18,6 +18,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # compile YouCompleteMe server (vim plugin) with C-family language support:
+sudo apt-get install -y clang
 ./.vim/bundle/YouCompleteMe/install.py --clang-completer
 
 # install emacs:
