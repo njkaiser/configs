@@ -61,9 +61,10 @@ if [[ $(lsb_release -rs) == "16.04" ]]; then
     dconf load /org/gnome/terminal/ < bash_settings.dconf
 fi
 
-# install unity and gnome tweak tools:
+# install unity/gnome/compiz tweak tools:
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y unity-tweak-tool
+sudo apt-get install -y compizconfig-settings-manager
 
 # install pip and all of the python packages I know I'll want:
 sudo apt-get install -y python-pip
@@ -75,3 +76,6 @@ sudo pip install tqdm # awesome status bar package
 
 # necessary for matplotlib:
 sudo apt install -y python-tk
+
+# can't forget vlc:
+sudo apt-get install -y vlc
