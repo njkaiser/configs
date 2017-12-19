@@ -5,6 +5,7 @@ sudo apt-get update
 
 # install byobu:
 sudo apt-get install -y byobu
+byobu-disable-prompt # replace byobu prompt with normal bash prompt
 
 # install tree:
 sudo apt-get install -y tree
@@ -16,6 +17,9 @@ sudo apt-get install -y vim
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+# compile YouCompleteMe server (vim plugin) with C-family language support:
+./.vim/bundle/YouCompleteMe/install.py --clang-completer
+
 # install emacs:
 sudo apt-get install -y emacs
 
@@ -23,6 +27,13 @@ sudo apt-get install -y emacs
 sudo add-apt-repository -y ppa:webupd8team/atom
 sudo apt-get update
 sudo apt-get install -y atom
+
+# install atom packages:
+apm install minimap
+apm install hard-wrap # Ctrl-Alt-y wraps lines at 80 characters
+apm install language-cmake # cmake syntax highlighting
+apm install remote-atom # for working over ssh
+apm install teletype # remote code-sharing for atom
 
 # install ag:
 sudo apt-get install -y silversearcher-ag

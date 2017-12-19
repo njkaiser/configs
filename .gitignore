@@ -42,3 +42,8 @@
 # !/.config/dconf/
 # /.config/dconf/*
 # !/.config/dconf/user
+
+# include my favorite background ever:
+!/Pictures
+/Pictures/*
+!/Pictures/sdoEquinox_0171_fixed.png
