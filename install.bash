@@ -80,6 +80,7 @@ fi
 sudo apt-get install -y gnome-tweak-tool
 sudo apt-get install -y unity-tweak-tool
 sudo apt-get install -y compizconfig-settings-manager
+sudo apt-get install -y compiz-plugins-extra
 
 # install pip and all of the python packages I know I'll want:
 sudo apt-get install -y python-pip
