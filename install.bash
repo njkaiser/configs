@@ -48,7 +48,10 @@ sudo apt-get install -y silversearcher-ag
 sudo apt-get install -y ack-grep
 
 # install htop:
-sudo apt-get install htop
+sudo apt-get install -y htop
+
+# install gparted:
+sudo apt-get install -y gparted
 
 # install spotify:
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886 0DF731E45CE24F27EEEB1450EFDC8610341D9410
