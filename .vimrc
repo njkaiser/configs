@@ -1,5 +1,20 @@
-syntax on
+" my stuff:
 imap kj <Esc>
+vmap kj <Esc>
+noremap - ddp
+noremap _ ddkP
+let mapleader = "\<Space>" 
+map <space> :
+nnoremap :ev :vsplit $MYVIMRC<cr>
+nnoremap :sv :so $MYVIMRC<cr>
+
+" start a cpp file:
+iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
+
+" Allow saving of files as sudo when I forgot to start vim using sudo
+cmap w!! w !sudo tee > /dev/null %
+
+syntax on
 set number
 filetype plugin indent on
 set autoindent

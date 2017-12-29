@@ -1,7 +1,7 @@
 # **VIM shortcuts**
 ##### *because the internet apparently can't put them all in one spot*
 
-#### Cursor Movement
+#### Motions
 - `h` move left
 - `j`	move down
 - `k`	move up
@@ -46,6 +46,10 @@
 - `o`	begin a new line below the cursor
 - `O`	begin a new line above the cursor
 - `ea`	append at end of word
+- `<Ctrl> + h`  delete previous character without leaving insert mode
+- `<Ctrl> + w`  delete previous word without leaving insert mode
+- `<Ctrl> + u`  delete line to left of cursor without leaving insert mode
+- `<Ctrl> + O`  enter normal mode for next command
 - `<Esc>`	exit insert mode
 
 #### Editing
@@ -55,9 +59,19 @@
 - `cc`	change (replace) an entire line
 - `cw`	change (replace) to the end of word
 - `c$`	change (replace) to the end of line
+- `C`	change (replace) to the end of line
 - `s`	delete character at cursor and subsitute text
-- `S`	delete line at cursor and substitute text (same as cc)
+- `S`	delete entire line and substitute text (same as cc)
 - `xp`	transpose two letters (cut and paste)
+- `guu`	change current line to lowercase
+- `gUU`	change current line to uppercase
+- `g~~`	invert case of current line
+- `guw`	change until end of current word to lowercase
+- `guaw`	change all of current word to lowercase
+- `gUw`	change until end of current word to uppercase
+- `gUaw`	change all of current word to uppercase
+- `gu` *motion* make all words in *motion* lowercase
+- `gU` *motion* make all words in *motion* uppercase
 - `u`	undo
 - `<Ctrl> + r`  redo
 - `.`	repeat last command (whole document)
@@ -71,7 +85,7 @@
 - `V`	start linewise visual mode
 - `<Ctrl> + v`	start visual block mode
 - `o`	move to other end of marked area
-- `O`	move to Other corner of block
+- `O`	move to other corner of block
 - `aw`	mark a word
 - `ab`	a () block (with braces)
 - `aB`	a {} block (with brackets)
@@ -84,11 +98,14 @@
 - `<`	unindent
 - `y`	yank (copy) marked text
 - `d`	delete marked text
-- `~`	switch case
+- `U`	convert selected text to uppercase
+- `u`	convert selected text to lowercase
+- `~`	switch case of selected
 - `=`   autoindent selection
 
 #### Cut and Paste
-- `yy`	copy a line
+- `yy`	copy entire line
+- `Y`	copy entire line
 - `2yy`	copy 2 lines
 - `yw`	copy word
 - `y$`	copy to end of line
