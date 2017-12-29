@@ -66,10 +66,7 @@ let g:EasyMotion_do_mapping = 1 " Enable default mappings
 
 " Ultisnips config:
 let g:UltiSnipsExpandTrigger="<c-j>"
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " let g:UltiSnipsEditSplit="horizontal"
 

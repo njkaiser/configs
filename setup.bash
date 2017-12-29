@@ -2,7 +2,7 @@
 
 # move all files from ~/config/* to ~/*
 for file in $HOME/config/{..?,.[!.],}*; do
-    mv $file $HOME                                                                                                                      
+    mv $file $HOME
 done
 
 # set git to use global gitignore file:
