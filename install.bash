@@ -92,3 +92,6 @@ sudo pip install tqdm # awesome status bar package
 
 # can't forget vlc:
 sudo apt-get install -y vlc
+
+# useful graphical tool for modifying PDFs:
+# sudo apt-get install -y pdfshuffler 
