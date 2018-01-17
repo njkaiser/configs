@@ -4,9 +4,16 @@ vmap kj <Esc>
 noremap - ddp
 noremap _ ddkP
 let mapleader = "\<Space>" 
-" map <space> :
+
+" probably not necessary, but whatever
 nnoremap :ev :vsplit $MYVIMRC<cr>
 nnoremap :sv :so $MYVIMRC<cr>
+
+" spaces are better than colons!
+noremap <Leader><Leader>w :w<CR>
+nnoremap <Leader><Leader>q :q<CR>
+nnoremap <Leader><Leader>wq :wq<CR>
+nnoremap <Leader><Leader>qq :q!<CR>
 
 " start a cpp file:
 iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
