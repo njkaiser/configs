@@ -4,9 +4,16 @@ vmap kj <Esc>
 noremap - ddp
 noremap _ ddkP
 let mapleader = "\<Space>" 
-map <space> :
+
+" probably not necessary, but whatever
 nnoremap :ev :vsplit $MYVIMRC<cr>
 nnoremap :sv :so $MYVIMRC<cr>
+
+" spaces are better than colons!
+noremap <Leader><Leader>w :w<CR>
+nnoremap <Leader><Leader>q :q<CR>
+nnoremap <Leader><Leader>wq :wq<CR>
+nnoremap <Leader><Leader>qq :q!<CR>
 
 " start a cpp file:
 iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
@@ -62,7 +69,23 @@ filetype plugin indent on " required
 " THIS IS ALL FOR VUNDLE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 " easymotion config:
-let g:EasyMotion_do_mapping = 1 " Enable default mappings
+"let g:EasyMotion_do_mapping = 1 " Enable default mappings
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1 " Turn on case insensitive feature
+" I did all this to avoid using the default <Leader><Leader>, but there's a
+" way to remap easymotion's leader - figure it out later
+map <Leader>w <Plug>(easymotion-w)
+map <Leader>b <Plug>(easymotion-b)
+map <Leader>e <Plug>(easymotion-e)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>f <Plug>(easymotion-f)
+map <Leader>F <Plug>(easymotion-F)
+map <Leader>t <Plug>(easymotion-t)
+map <Leader>T <Plug>(easymotion-T)
+map <Leader>n <Plug>(easymotion-n)
+map <Leader>N <Plug>(easymotion-N)
+
 
 " Ultisnips config:
 let g:UltiSnipsExpandTrigger="<c-j>"
