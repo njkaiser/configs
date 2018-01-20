@@ -15,6 +15,11 @@ nnoremap <Leader><Leader>q :q<CR>
 nnoremap <Leader><Leader>wq :wq<CR>
 nnoremap <Leader><Leader>qq :q!<CR>
 
+" hack for now:
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
+
 " start a cpp file:
 iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
 
@@ -93,3 +98,5 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " let g:UltiSnipsEditSplit="horizontal"
 
+" this prevents YCM from asking if the file is okay to load every time:
+let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
