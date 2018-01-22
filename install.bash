@@ -89,6 +89,7 @@ sudo pip install scipy
 sudo apt install -y python-tk # necessary for matplotlib
 sudo pip install matplotlib
 sudo pip install tqdm # awesome status bar package
+sudo pip install ipython
 
 # can't forget vlc:
 sudo apt-get install -y vlc
