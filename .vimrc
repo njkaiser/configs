@@ -1,9 +1,14 @@
-" my stuff:
+" important stuff:
 imap kj <Esc>
+imap KJ <Esc>
+imap Kj <Esc>
+imap kJ <Esc>
 vmap kj <Esc>
+let mapleader = "\<Space>" 
+
+" line movers:
 noremap - ddp
 noremap _ ddkP
-let mapleader = "\<Space>" 
 
 " probably not necessary, but whatever
 nnoremap :ev :vsplit $MYVIMRC<cr>
@@ -15,13 +20,13 @@ nnoremap <Leader><Leader>q :q<CR>
 nnoremap <Leader><Leader>wq :wq<CR>
 nnoremap <Leader><Leader>qq :q!<CR>
 
-" hack for now:
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+" arguably useful, if you're me:
+noremap <C-n> :set number!<CR>
+noremap <C-p> :set invpaste paste?<CR>
 set showmode
 
 " start a cpp file:
-iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
+" iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
 
 " Allow saving of files as sudo when I forgot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %

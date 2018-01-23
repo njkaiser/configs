@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # first things first:
 sudo apt-get update

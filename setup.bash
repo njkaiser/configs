@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 # move all files from ~/config/* to ~/*
 for file in $HOME/config/{..?,.[!.],}*; do
