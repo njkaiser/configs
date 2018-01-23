@@ -100,3 +100,20 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " this prevents YCM from asking if the file is okay to load every time:
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+
+" The g:ycm_key_list_select_completion option
+" This option controls the key mappings used to select the first completion string. Invoking any of them repeatedly cycles forward through the completion list.
+" Some users like adding <Enter> to this list.
+" Default: ['<TAB>', '<Down>']
+" let g:ycm_key_list_select_completion = ['<TAB>', '<Down>']
+
+" The g:ycm_key_list_previous_completion option
+" This option controls the key mappings used to select the previous completion string. Invoking any of them repeatedly cycles backwards through the completion list.
+" Note that one of the defaults is <S-TAB> which means Shift-TAB. That mapping will probably only work in GUI Vim (Gvim or MacVim) and not in plain console Vim because the terminal usually does not forward modifier key combinations to Vim.
+" Default: ['<S-TAB>', '<Up>']
+" let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+
+" The g:ycm_key_list_stop_completion option
+" This option controls the key mappings used to close the completion menu. This is useful when the menu is blocking the view, when you need to insert the <TAB> character, or when you want to expand a snippet from UltiSnips and navigate through it.
+" Default: ['<C-y>']
+" let g:ycm_key_list_stop_completion = ['<C-y>']
