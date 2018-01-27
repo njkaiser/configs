@@ -105,6 +105,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " this prevents YCM from asking if the file is okay to load every time:
 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+let g:ycm_enable_diagnostic_highlighting = 0
+let g:ycm_enable_diagnostic_signs = 0
 
 " The g:ycm_key_list_select_completion option
 " This option controls the key mappings used to select the first completion string. Invoking any of them repeatedly cycles forward through the completion list.
