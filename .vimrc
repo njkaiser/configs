@@ -36,8 +36,8 @@ set number
 filetype plugin indent on
 set autoindent
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set cursorline
 set smartcase " searches are case insensitive unless something in search term is capitalized
@@ -87,6 +87,7 @@ let g:EasyMotion_smartcase = 1 " Turn on case insensitive feature
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>b <Plug>(easymotion-b)
 map <Leader>e <Plug>(easymotion-e)
+map <Leader>s <Plug>(easymotion-s)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>f <Plug>(easymotion-f)
