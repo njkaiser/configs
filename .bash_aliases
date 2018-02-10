@@ -11,6 +11,11 @@ fi
 HISTSIZE=
 HISTFILESIZE=
 
+# tmux/byobu history adds to bash history file
+export HISTCONTROL=ignoredups:erasedups # no duplicate entries
+shopt -s histappend # append to history, don't overwrite it
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # Save and reload the history after each command finishes
+
 # alias to restart network manager, since there's a
 # bug and it always needs restarting on my desktop:
 alias rsnm='sudo service network-manager restart'
