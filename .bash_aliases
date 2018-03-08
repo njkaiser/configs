@@ -14,7 +14,7 @@ HISTFILESIZE=
 # tmux/byobu history adds to bash history file
 export HISTCONTROL=ignoredups:erasedups # no duplicate entries
 shopt -s histappend # append to history, don't overwrite it
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # Save and reload the history after each command finishes
+#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND" # Save and reload the history after each command finishes
 
 # alias to restart network manager, since there's a
 # bug and it always needs restarting on my desktop:
@@ -31,20 +31,6 @@ alias owd='nautilus $(pwd) &'
 # because source devel/setup.bash is way too much typing:
 alias src='source devel/setup.bash'
 alias srco='source /opt/ros/indigo/setup.bash'
-
-# aliases for rapidly moving to course directories:
-alias 314='cd ~/Courses/ME314; pwd; ll;'
-alias 333='cd ~/Courses/ME333; pwd; ll;'
-alias 349='cd ~/Courses/EECS349; pwd; ll;'
-alias 358='cd ~/Courses/EECS358; pwd; ll;'
-alias 369='cd ~/Courses/EECS369; pwd; ll;'
-alias 432='cd ~/Courses/EECS432; pwd; ll;'
-alias 449='cd ~/Courses/ME449; pwd; ll;'
-alias 454='cd ~/Courses/ME454; pwd; ll;'
-alias 469='cd ~/Courses/EECS469; pwd; ll;'
-alias 495='cd ~/Courses/ME495; pwd; ll;'
-alias W='cd ~/Courses/Winter_Project/; pwd; ll;'
-alias F='cd ~/Courses/Final_Project/; pwd; ll;'
 
 # open stuff with default program (copied from Jarvis):
 alias go='xdg-open'
