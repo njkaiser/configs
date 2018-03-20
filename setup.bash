@@ -1,10 +1,16 @@
 #!/bin/bash
 set -x
 
+# SCRATCH THIS, BETTER TO SYMLINK
 # move all files from ~/config/* to ~/*
-for file in $HOME/config/{..?,.[!.],}*; do
-    mv $file $HOME
-done
+# for file in $HOME/config/{..?,.[!.],}*; do
+#     mv $file $HOME
+# done
+
+# add symlinks for necessary config files
+cd ~/
+ln -s ~/config/.vimrc .
+ln -s ~/config/.bash_aliases .
 
 # set git to use global gitignore file:
 git config --global core.excludesfile ~/.gitignore_global

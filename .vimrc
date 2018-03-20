@@ -10,10 +10,6 @@ let mapleader = "\<Space>"
 noremap - ddp
 noremap _ ddkP
 
-" probably not necessary, but whatever
-nnoremap :ev :vsplit $MYVIMRC<cr>
-nnoremap :sv :so $MYVIMRC<cr>
-
 " spaces are better than colons!
 noremap <Leader><Leader>w :w<CR>
 nnoremap <Leader><Leader>q :q<CR>
@@ -25,15 +21,11 @@ noremap <C-n> :set number!<CR>
 noremap <C-p> :set invpaste paste?<CR>
 set showmode
 
-" start a cpp file:
-" iabbrev cppskel "#include <iostream>\n\nint main(int argv, char **argc) {\n\nreturn 0;\n}\n"
-
 " Allow saving of files as sudo when I forgot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %
 
 syntax on
 set number
-filetype plugin indent on
 set autoindent
 set smartindent
 set tabstop=2
@@ -45,6 +37,7 @@ set smartcase " searches are case insensitive unless something in search term is
 " support for roslaunch XML syntax:
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
 
+filetype plugin indent on
 " THIS IS ALL FOR VUNDLE *****************************************
 set nocompatible " be iMproved, required
 filetype off     " required
@@ -96,7 +89,6 @@ map <Leader>t <Plug>(easymotion-t)
 map <Leader>T <Plug>(easymotion-T)
 map <Leader>n <Plug>(easymotion-n)
 map <Leader>N <Plug>(easymotion-N)
-
 
 " Ultisnips config:
 let g:UltiSnipsExpandTrigger="<c-j>"
