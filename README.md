@@ -163,6 +163,7 @@
 - `<Shift> + K`	suspends vim and opens man page for the command under the cursor
 - `<Ctrl> + g`	shows filename, status, # of lines, and percentage of way through buffer
 - `g + <Ctrl> + g`	shows column, line, word, and byte information
+- `1 + <Ctrl> + g`	shows full path filename, status, # of lines, and percentage of way through buffer
 - `<Ctrl> + s`	stops (freezes) VIM
 - `<Ctrl> + q`	resumes (unfreezes) VIM
 - `:%s/`*`pattern`*`//gn`	count number of matches of *pattern*

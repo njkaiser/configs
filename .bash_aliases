@@ -98,6 +98,19 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 # trim the directory portion of the prompt;
 PROMPT_DIRTRIM=3 # this only works in bash 4+
 
+alias cdl='cd_to_last_chronological_dir'
+function cd_to_last_chronological_dir {
+  latest_dir=''
+  for d in `ls -d */ | grep "^20......_......"`; do
+    if [ "$d" \> "$latest_dir" ]; then
+      latest_dir=$d
+    fi
+    # echo "$d"
+  done
+  echo "latest chronological directory: $latest_dir"
+  cd $latest_dir
+}
+
 # set editor to vim for editing commands
 export VISUAL=vim
 export EDITOR=vim
