@@ -9,6 +9,8 @@
 !.gitignore
 !.gitignore_global
 !.nanorc
+!skeleton.cpp
+!skeleton.py
 !.vimrc
 !README.md
 !peter.vimrc
