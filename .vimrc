@@ -32,7 +32,16 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set cursorline
-set smartcase " searches are case insensitive unless something in search term is capitalized
+set smartcase
+
+" Add background highlighting to characters at the 80th column,
+" which is much less annoying/intrusive than :set colorcolumn=80.
+highlight ColorColumn ctermbg=DarkCyan
+call matchadd('ColorColumn', '\%81v', 100)
+"To activate highlight:
+"nnoremap <C-c> :match Search '\%>80v.\+'<CR>
+"To deactivate it:
+"nnoremap <leader>2 :match none<CR>
 
 " support for roslaunch XML syntax:
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
@@ -52,6 +61,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'haya14busa/incsearch-easymotion.vim'
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -87,8 +98,8 @@ map <Leader>f <Plug>(easymotion-f)
 map <Leader>F <Plug>(easymotion-F)
 map <Leader>t <Plug>(easymotion-t)
 map <Leader>T <Plug>(easymotion-T)
-map <Leader>n <Plug>(easymotion-n)
-map <Leader>N <Plug>(easymotion-N)
+" map <Leader>n <Plug>(easymotion-n)
+" map <Leader>N <Plug>(easymotion-N)
 
 " Ultisnips config:
 let g:UltiSnipsExpandTrigger="<c-j>"
@@ -118,3 +129,23 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 " This option controls the key mappings used to close the completion menu. This is useful when the menu is blocking the view, when you need to insert the <TAB> character, or when you want to expand a snippet from UltiSnips and navigate through it.
 " Default: ['<C-y>']
 " let g:ycm_key_list_stop_completion = ['<C-y>']
+
+" IncSearch config:
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map /  <Plug>(incsearch-forward)
+map <Leader>/ <Plug>(incsearch-easymotion-/)
+map ?  <Plug>(incsearch-backward)
+map <Leader>? <Plug>(incsearch-easymotion-?)
+map g/ <Plug>(incsearch-stay)
+" map g/ <Plug>(incsearch-easymotion-stay)
+map n  <Plug>(incsearch-nohl-n)
+map <Leader>n <Plug>(incsearch-easymotion-n)
+map N  <Plug>(incsearch-nohl-N)
+map <Leader>N <Plug>(incsearch-easymotion-N)
+map *  <Plug>(incsearch-nohl-*)
+map <Leader>* <Plug>(incsearch-easymotion-*)
+map #  <Plug>(incsearch-nohl-#)
+map <Leader># <Plug>(incsearch-easymotion-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)

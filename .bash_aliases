@@ -59,6 +59,9 @@ alias gpo='git push origin '
 alias gpom='git push origin master'
 alias gd='git diff '
 alias gl='git log'
+alias gsl='git stash list'
+alias gss='git stash save '
+alias gsp='git stash pop'
 
 # why should I have to type out 'rosla'? way too many keystrokes...
 alias rl='roslaunch '
