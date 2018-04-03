@@ -41,9 +41,30 @@ function nano() {
   if ([ -e "$1" ] && ! [ -w "$1" ]) || ( ! [ -e "$1" ] && ! [ -w "`dirname $1`" ]);
   then
     read -n 1 -p "$1 is not editable by you. sudo [y/n]? " y
-    [ "$y" == "y" ] || [ "$y" == "Y" ] && echo -e "\n" && sudo $nano $@
+    if ([ "$y" == "y" ] || [ "$y" == "Y" ]);
+      then
+        echo -e "\n" && sudo $nano $@
+      else
+        echo -e "\n" && $nano $@
+    fi
   else
-    $nano $@
+    echo -e "\n" && $nano $@
+  fi
+}
+
+function vim() {
+  vim=`which vim`;
+  if ([ -e "$1" ] && ! [ -w "$1" ]) || ( ! [ -e "$1" ] && ! [ -w "`dirname $1`" ]);
+  then
+    read -n 1 -p "$1 is not editable by you. sudo [y/n]? " y
+    if ([ "$y" == "y" ] || [ "$y" == "Y" ]);
+      then
+        echo -e "\n" && sudo $vim $@
+      else
+        echo -e "\n" && $vim $@
+    fi
+  else
+    echo -e "\n" && $vim $@
   fi
 }
 
@@ -59,7 +80,7 @@ alias gpo='git push origin '
 alias gpom='git push origin master'
 alias gd='git diff '
 alias gl='git log'
-alias gsl='git stash list'
+alias gsl='git stash list | cat'
 alias gss='git stash save '
 alias gsp='git stash pop'
 
