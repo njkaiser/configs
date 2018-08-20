@@ -93,6 +93,9 @@ alias rnw='tmux movew -r'
 # useful command line aliases:
 alias f='find . -type f -iname '
 
+# why did I not do this earlier?
+alias v='vim'
+
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE

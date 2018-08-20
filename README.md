@@ -166,6 +166,9 @@ Vim has some special marks which it sets automatically. Here are some of the mos
 - `<Ctrl> + ww`	switch between windows
 - `<Ctrl> + wq`	quit a window
 - `<Ctrl> + wv`	split windows vertically
+- `gf`	go to file under cursor
+- `<Ctrl> + o`	jump backward one buffer
+- `<Ctrl> + i`	jump forward one buffer
 
 #### Screen Translation
 - `zz`	translate screen so current line is at center

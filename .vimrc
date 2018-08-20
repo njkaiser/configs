@@ -10,7 +10,11 @@ let mapleader = "\<Space>"
 noremap - ddp
 noremap _ ddkP
 
-" spaces are better than colons!
+" vnoremap <C-c> :'<,'>w! ~/temp<CR>
+vnoremap <C-c> :"*y<CR>
+
+" spaces are better than colons! Unless it's your real colon, then I suppose
+" you need it to poop.
 noremap <Leader><Leader>w :w<CR>
 nnoremap <Leader><Leader>q :q<CR>
 nnoremap <Leader><Leader>wq :wq<CR>
@@ -33,6 +37,18 @@ set shiftwidth=2
 set expandtab
 set cursorline
 set smartcase
+
+" Save undo file history (saves you if you accidentally delete a file)
+if !isdirectory($HOME."/.vim")
+    call mkdir($HOME."/.vim", "", 0770)
+endif
+if !isdirectory($HOME."/.vim/undo-dir")
+    call mkdir($HOME."/.vim/undo-dir", "", 0700)
+endif
+set undodir=~/.vim/undo-dir
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 " Add background highlighting to characters at the 80th column,
 " which is much less annoying/intrusive than :set colorcolumn=80.
@@ -134,10 +150,11 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
+" map /  <Plug>(incsearch-stay)
 map <Leader>/ <Plug>(incsearch-easymotion-/)
 map ?  <Plug>(incsearch-backward)
 map <Leader>? <Plug>(incsearch-easymotion-?)
-map g/ <Plug>(incsearch-stay)
+" map g/ <Plug>(incsearch-stay)
 " map g/ <Plug>(incsearch-easymotion-stay)
 map n  <Plug>(incsearch-nohl-n)
 map <Leader>n <Plug>(incsearch-easymotion-n)
