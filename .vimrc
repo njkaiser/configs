@@ -10,8 +10,9 @@ let mapleader = "\<Space>"
 noremap - ddp
 noremap _ ddkP
 
-" vnoremap <C-c> :'<,'>w! ~/temp<CR>
-vnoremap <C-c> :"*y<CR>
+" Easier copy/paste between files
+vnoremap <C-c> :'<,'>w! /tmp/vimcopybuffer<CR>
+nnoremap <C-p> :r /tmp/vimcopybuffer<CR>
 
 " spaces are better than colons! Unless it's your real colon, then I suppose
 " you need it to poop.
@@ -22,7 +23,7 @@ nnoremap <Leader><Leader>qq :q!<CR>
 
 " arguably useful, if you're me:
 noremap <C-n> :set number!<CR>
-noremap <C-p> :set invpaste paste?<CR>
+" noremap <ALT+p> :set invpaste paste?<CR>
 set showmode
 
 " Allow saving of files as sudo when I forgot to start vim using sudo
@@ -79,6 +80,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -129,6 +132,10 @@ let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
+" Jump to the definition of a macro or function:
+nnoremap <Leader>g :YcmCompleter GoTo<CR>
+" inoremap <C-g> <Esc>:YcmCompleter GoTo<CR>i
+
 " The g:ycm_key_list_select_completion option
 " This option controls the key mappings used to select the first completion string. Invoking any of them repeatedly cycles forward through the completion list.
 " Some users like adding <Enter> to this list.
@@ -166,3 +173,36 @@ map #  <Plug>(incsearch-nohl-#)
 map <Leader># <Plug>(incsearch-easymotion-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+" set airline theme:
+let g:airline_theme='deus'
+
+" Cardi B's source/header switching function, mapped to ",s"
+function! SwitchSourceHeader()
+  " Get the current file extension. To see what this command is doing,
+  " see :help expand.
+  let l:cur_ext=expand("%:e")
+  " See if we have a source file (ending in .cpp or .cc).
+  if (expand ("%:e") == "cpp" || expand ("%:e") == "cc")
+    " %:t gives the basename with extension, :r trims the extension.
+    " Try searching for both .h and .hpp extensions, and open the first file
+    " that is found.
+    let l:h_path=expand("%:r") . ".h"
+    let l:hpp_path=expand("%:r") . ".hpp"
+    if filereadable(h_path)
+      find %:t:r.h
+    elseif filereadable(hpp_path)
+      find %:t:r.hpp
+    endif
+  else
+    let l:cpp_path=expand("%:r") . ".cpp"
+    let l:cc_path=expand("%:r") . ".cc"
+    if filereadable(cpp_path)
+      find %:t:r.cpp
+    elseif filereadable(cc_path)
+      find %:t:r.cc
+    endif
+  endif
+endfunction
+
+nmap ,s :call SwitchSourceHeader()<CR>

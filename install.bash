@@ -29,8 +29,9 @@ vim +PluginInstall +qall
 sudo apt-get install -y clang
 ./.vim/bundle/YouCompleteMe/install.py --clang-completer
 
-# install emacs, even though I don't use it:
-sudo apt-get install -y emacs
+# TODO clone and insall all vim plugins here:
+git clone git@github.com:vim-airline/vim-airline.git .vim/bundle/
+vim +PluginInstall +qall
 
 # install atom:
 sudo add-apt-repository -y ppa:webupd8team/atom
@@ -61,13 +62,13 @@ sudo apt-get update
 sudo apt-get install -y spotify-client
 
 # install google chrome:
-sudo echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list
-wget https://dl.google.com/linux/linux_signing_key.pub
-sudo apt-key add linux_signing_key.pub
-sudo apt-get update
-sudo apt-get install -y google-chrome-stable
-sudo rm /etc/apt/sources.list.d/google-chrome.list
-rm linux_signing_key.pub
+# sudo echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list
+# wget https://dl.google.com/linux/linux_signing_key.pub
+# sudo apt-key add linux_signing_key.pub
+# sudo apt-get update
+# sudo apt-get install -y google-chrome-stable
+# sudo rm /etc/apt/sources.list.d/google-chrome.list
+# rm linux_signing_key.pub
 
 # install dconf (for setting terminal profile preferences):
 # Ubuntu 16.04 ONLY

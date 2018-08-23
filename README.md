@@ -169,6 +169,7 @@ Vim has some special marks which it sets automatically. Here are some of the mos
 - `gf`	go to file under cursor
 - `<Ctrl> + o`	jump backward one buffer
 - `<Ctrl> + i`	jump forward one buffer
+- `<Ctrl> + ^`	jump to the alternate (last edited) buffer
 
 #### Screen Translation
 - `zz`	translate screen so current line is at center
