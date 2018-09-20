@@ -1,0 +1,4 @@
+### CompizConfig Settings Manager
+# Set workspace switching duration to fast:
+  Desktop → Desktop Wall → Viewport switching → set Wall sliding duration to 0.1
+  Window Management → Put → set Put to next/previous Output speed to 8.0
