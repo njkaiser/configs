@@ -82,6 +82,7 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -132,10 +133,6 @@ let g:ycm_enable_diagnostic_highlighting = 0
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" Jump to the definition of a macro or function:
-nnoremap <Leader>g :YcmCompleter GoTo<CR>
-" inoremap <C-g> <Esc>:YcmCompleter GoTo<CR>i
-
 " The g:ycm_key_list_select_completion option
 " This option controls the key mappings used to select the first completion string. Invoking any of them repeatedly cycles forward through the completion list.
 " Some users like adding <Enter> to this list.
@@ -175,7 +172,10 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " set airline theme:
-let g:airline_theme='deus'
+" set encoding=utf-8
+" let g:airline_powerline_fonts=1
+" let g:airline_theme='deus'
+" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 
 " Cardi B's source/header switching function, mapped to ",s"
 function! SwitchSourceHeader()
@@ -204,5 +204,100 @@ function! SwitchSourceHeader()
     endif
   endif
 endfunction
+" FUNCTION CALL FOR ABOVE
+nnoremap ,s :call SwitchSourceHeader()<CR>
 
-nmap ,s :call SwitchSourceHeader()<CR>
+" function! SwitchSourceBuild()
+"   let l:cur_file=expand("%:t") " filename only (i.e. blah.txt)
+"   let l:cur_dir = substitute(expand("%"), l:cur_file, "", "") " relative path to directory containing file
+"   " echo cur_dir
+" 
+"   let l:build_file=l:cur_dir . "BUILD"
+"   " echo build_file
+" 
+"   let l:cur_ext=expand("%:e") " extension only (i.e. txt)
+" 
+"   " See if we have a C++ code file.
+"   if (cur_ext == "cpp" || cur_ext == "cc" || cur_ext == "h" || cur_ext == "hpp")
+"     " echo "HERE 1"
+"     if filereadable(build_file)
+"       " echo "HERE 2"
+"       " echo build_file
+"       " find build_file
+"       :execute 'edit' findfile("BUILD", ".;")
+"       " find findfile("BUILD", ".;")
+"     endif
+"     " echo "HERE 3"
+"   elseif (cur_file="BUILD")
+"     let wordUnderCursor = expand("<cword>")
+"     let l:cpp_path=expand("%:r") . ".cpp"
+"     let l:cc_path=expand("%:r") . ".cc"
+"     if filereadable(cpp_path)
+"       find %:t:r.cpp
+"     elseif filereadable(cc_path)
+"       find %:t:r.cc
+"     endif
+"   " elseif (cur_ext="py")
+"   "   TODO expand to work with Python files
+"   else
+"     echo "File must be named `BUILD` or end in [`.cpp`, `.cc`, `.hpp`, `.h`]"
+"   endif
+" endfunction
+" " FUNCTION CALL FOR ABOVE
+" nnoremap ,b :call SwitchSourceBuild()<CR>
+
+function! GoToBuild()
+python3 << EOF
+import vim
+import os.path
+
+try:
+  fn = vim.current.buffer.name
+  tokens = fn.split('/')
+  basename = tokens[-1]
+  buildfile = None
+  for i in range(len(tokens)-1, 0, -1):
+    buildfile = '/'.join(tokens[:i]) + '/BUILD'
+    if os.path.isfile(buildfile):
+      break
+  if buildfile:
+    print("found!!!",buildfile)
+    vim.command('edit ' + buildfile)
+    vim.command('call search("\\"' + basename + '\\"")')
+except Exception as e:
+   print("Something went wrong: " + str(e))
+EOF
+endfunction
+" FUNCTION CALL FOR ABOVE
+nnoremap ,b :call GoToBuild()<CR>
+
+" Cardi B's script for updating BUILD files, mapped to ",u"
+function! UpdateDeps()
+  let l:fname=expand('%:p')
+  py3f /mnt/flashblade/carden/utils/update_deps_vim.py
+  call input('Press any key to continue')
+  redraw!
+  execute 'edit' l:fname
+endfunction
+" FUNCTION CALL FOR ABOVE
+nnoremap ,u :call UpdateDeps()<cr>
+
+"------------------------------------------------------------}
+" YouCompleteMe Config
+"
+" Set this so that ycm can find python for my virtualenv
+let g:ycm_python_binary_path = 'python'
+" Set this for compilation flags
+" let g:ycm_global_ycm_extra_conf='~/.vim/ycm_config/cpp/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+" Set this to make ycm a syntastic checker
+let g:ycm_register_as_syntastic_checker=0
+" Set this to use CTags
+let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_goto_buffer_command = 'horizontal-split'
+"TODO these key mapping were making arrow keys do stupid things, fix them:
+" nnoremap <C-q> :YcmCompleter GoToDeclaration<CR>
+" nnoremap <C-w> :YcmCompleter GoToDefinition<CR>
+nnoremap <C-t> :YcmCompleter GetType<CR>
+" Jump to the definition of a macro or function:
+nnoremap <C-f> :YcmCompleter GoTo<CR>

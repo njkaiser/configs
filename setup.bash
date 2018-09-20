@@ -9,8 +9,8 @@ set -x
 
 # add symlinks for necessary config files
 cd ~/
-ln -s ~/config/.vimrc .
-ln -s ~/config/.bash_aliases .
+ln -s ~/configs/.vimrc .
+ln -s ~/configs/.bash_aliases .
 
 # set git to use global gitignore file:
 git config --global core.excludesfile ~/.gitignore_global

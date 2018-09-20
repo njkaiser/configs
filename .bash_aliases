@@ -96,6 +96,11 @@ alias f='find . -type f -iname '
 # why did I not do this earlier?
 alias v='vim'
 
+# cd is hard
+alias u='cd ..'
+alias uu='cd ../..'
+alias uuu='cd ../../..'
+
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE
