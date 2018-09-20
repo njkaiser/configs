@@ -207,45 +207,6 @@ endfunction
 " FUNCTION CALL FOR ABOVE
 nnoremap ,s :call SwitchSourceHeader()<CR>
 
-" function! SwitchSourceBuild()
-"   let l:cur_file=expand("%:t") " filename only (i.e. blah.txt)
-"   let l:cur_dir = substitute(expand("%"), l:cur_file, "", "") " relative path to directory containing file
-"   " echo cur_dir
-" 
-"   let l:build_file=l:cur_dir . "BUILD"
-"   " echo build_file
-" 
-"   let l:cur_ext=expand("%:e") " extension only (i.e. txt)
-" 
-"   " See if we have a C++ code file.
-"   if (cur_ext == "cpp" || cur_ext == "cc" || cur_ext == "h" || cur_ext == "hpp")
-"     " echo "HERE 1"
-"     if filereadable(build_file)
-"       " echo "HERE 2"
-"       " echo build_file
-"       " find build_file
-"       :execute 'edit' findfile("BUILD", ".;")
-"       " find findfile("BUILD", ".;")
-"     endif
-"     " echo "HERE 3"
-"   elseif (cur_file="BUILD")
-"     let wordUnderCursor = expand("<cword>")
-"     let l:cpp_path=expand("%:r") . ".cpp"
-"     let l:cc_path=expand("%:r") . ".cc"
-"     if filereadable(cpp_path)
-"       find %:t:r.cpp
-"     elseif filereadable(cc_path)
-"       find %:t:r.cc
-"     endif
-"   " elseif (cur_ext="py")
-"   "   TODO expand to work with Python files
-"   else
-"     echo "File must be named `BUILD` or end in [`.cpp`, `.cc`, `.hpp`, `.h`]"
-"   endif
-" endfunction
-" " FUNCTION CALL FOR ABOVE
-" nnoremap ,b :call SwitchSourceBuild()<CR>
-
 function! GoToBuild()
 python3 << EOF
 import vim
