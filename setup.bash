@@ -5,9 +5,10 @@ set -x
 cd ~/
 rm ~/.bash_aliases; ln -s ~/configs/.bash_aliases ~/.bash_aliases
 rm ~/.gitignore_global; ln -s ~/configs/.gitignore_global ~/.gitignore_global
-ln -s ~/configs/.nanorc ~/.nanorc
-ln -s ~/configs/.tmux.conf
-ln -s ~/configs/.vimrc
+rm ~/.nanorc; ln -s ~/configs/.nanorc ~/.nanorc
+rm ~/.tmux.conf; ln -s ~/configs/.tmux.conf ~/.tmux.conf
+rm ~/.vimrc; ln -s ~/configs/.vimrc ~/.vimrc
+rm ~/.ycm_extra_conf.py; ln -s ~/configs/.ycm_extra_conf.py ~/.ycm_extra_conf.py
 
 # set git to use some handy global config stuff:
 git config --global core.excludesfile ~/.gitignore_global
