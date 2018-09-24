@@ -262,3 +262,8 @@ let g:ycm_goto_buffer_command = 'horizontal-split'
 nnoremap <C-t> :YcmCompleter GetType<CR>
 " Jump to the definition of a macro or function:
 nnoremap <C-f> :YcmCompleter GoTo<CR>
+
+" fugitive setup:
+cnoreabbrev gd Gdiff
+cnoreabbrev gs Gstatus
+cnoreabbrev gb Gblame
