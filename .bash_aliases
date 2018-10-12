@@ -70,20 +70,19 @@ function vim() {
 
 # git commands that are just the right length that you have to type out almost the entire word:
 alias gf='git fetch'
-# alias gm='git merge origin/master' # this is a no-no at work
 alias gs='git status'
 alias ga='git add '
 alias gaa='git add -A'
 alias gau='git add -u'
 alias gc='git commit -m '
-# alias gpo='git push origin ' # not really that useful when --upstream is set
-# alias gpom='git push origin master'
 alias gd='git diff '
 alias gl='git log'
 alias glg='git log --decorate --oneline --graph'
+alias glg1='git log --decorate --oneline --graph --first-parent'
 alias gsl='git stash list | cat'
 alias gss='git stash save '
 alias gsp='git stash pop'
+alias gbv='git branch -v | cat'
 
 # why should I have to type out 'rosla'? way too many keystrokes...
 alias rl='roslaunch '
