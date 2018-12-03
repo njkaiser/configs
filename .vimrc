@@ -51,6 +51,9 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
+
+set wildmode=longest,list " bash-like autocompletion
+
 " Add background highlighting to characters at the 80th column,
 " which is much less annoying/intrusive than :set colorcolumn=80.
 highlight ColorColumn ctermbg=DarkCyan
