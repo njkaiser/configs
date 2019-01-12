@@ -17,6 +17,8 @@ git config --global user.email "natejkaiser@gmail.com"
 git config --global push.default simple
 git config --global remote.origin.prune true
 
+byobu-disable-prompt
+
 # set desktop background to most awesome picture in the world:
 # DIR="$HOME/Pictures"
 # PIC="$DIR/sdoEquinox_0171_fixed.png"
