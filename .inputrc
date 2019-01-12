@@ -1,0 +1,27 @@
+# Don't forget about the defaults that might be available!
+$include /etc/inputrc
+
+# Colored tab completion
+set colored-stats on
+
+# Does what it says
+set completion-ignore-case on
+
+# Makes all common prefix characters a different color
+# NOTE: requires bash 4.4
+set colored-completion-prefix on
+
+# replaces any characters that match the completion pattern with an ellipses
+# TODO: remove once I have bash 4.4 (can use colored prefix instead)
+set completion-prefix-display-length 3
+
+# Adds a trailing '/' to the end of symlinked directories
+set mark-symlinked-directories on
+
+# No need to double tab the <Tab> key to get autocomplete suggestions with these
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Adds a character indicating the filetype after the filename during a completion
+# Kinda useless if you're already using color indicators
+#set visible-stats on

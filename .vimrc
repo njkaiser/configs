@@ -6,9 +6,15 @@ imap kJ <Esc>
 vmap kj <Esc>
 let mapleader = "\<Space>" 
 
+" syntax highlighting for protobufs (must copy contents of this file to ~/.vim/syntax/proto.vim:
+" https://github.com/protocolbuffers/protobuf/blob/master/editors/proto.vim)
+augroup filetype
+  au! BufRead,BufNewFile *.proto setfiletype proto
+augroup end
+
 " line movers:
-noremap - ddp
-noremap _ ddkP
+" noremap - ddp
+" noremap _ ddkP
 
 " Easier copy/paste between files
 vnoremap <C-c> :'<,'>w! /tmp/vimcopybuffer<CR>
@@ -83,6 +89,8 @@ Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -101,6 +109,9 @@ filetype plugin indent on " required
 " Put your non-Plugin stuff after this line
 "
 " THIS IS ALL FOR VUNDLE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+" fzf stuff:
+set rtp+=~/.fzf
 
 " easymotion config:
 "let g:EasyMotion_do_mapping = 1 " Enable default mappings
