@@ -143,9 +143,9 @@ Vim has some special marks which it sets automatically. Here are some of the mos
 - `<Ctrl> + y`	(when in insert mode) copy/paste character from line above
 
 #### Repeating Groups of Commands
-- `q`*`char <commands> `*`q`	store *`<commands>`* in buffer *`char`*
-- `@`*`char`*  repeat *`<commands>`* stored in buffer *`char`*
-- `@@`  repeat *`<commands>`* stored in the last used buffer (called buy `@`*`char`*)
+- `q`*`char <commands> `*`q`	store *<commands>* in buffer *char*
+- `@`*`char`*  repeat *<commands>* stored in buffer *char*
+- `@@`  repeat *<commands>* stored in the last used buffer (called buy `@`*`char`*)
 
 #### Search/Replace
 - `/`*`pattern`*	search for *pattern*
