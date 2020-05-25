@@ -92,8 +92,22 @@ Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+" Plugin 'taketwo/vim-ros'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'Chiel92/vim-autoformat'
+let g:autoformat_verbosemode = 0
+"let g:autoformat_verbosemode = 1
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+let g:formatter_yapf_style = 'pep8'
+let g:formatdef_clangformat = "'clang-format-3.6 -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=file'"
+let g:formatdef_remark_markdown = '"remark --quiet --no-color --setting footnotes:true"'
+let g:formatdef_buildifier = '"buildifier --mode=fix"'
+let g:formatters_python = ['yapf']
+let g:formatters_bzl = ['yapf']
+let g:formatters_build = ['buildifier']
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -115,6 +129,7 @@ filetype plugin indent on " required
 
 " fzf stuff:
 set rtp+=~/.fzf
+map ,f :FZF<CR>
 
 " easymotion config:
 "let g:EasyMotion_do_mapping = 1 " Enable default mappings
@@ -257,6 +272,23 @@ endfunction
 " FUNCTION CALL FOR ABOVE
 nnoremap ,u :call UpdateDeps()<cr>
 
+
+" TODO fix this so it actually works when I type :bb
+"" Lakshay's bazel build current taret from within vim, mapped to ":bb"
+"function! BazelCmd() "action, target)
+"  let file_name = expand('%:t:r')
+"  echo "hello" . file_name
+"  "let tmp_file = "/tmp/bazel_vim_stderr.txt"
+"  "let error_regex = "^[^: ]*:[0-9]\\{1,\\}:[0-9]\\{1,\\}: error"
+"  "let cmd = "bazel " . a:action . " " . a:target . " 2>&1 | tee >(grep '" . error_regex . "' >" . tmp_file . ")"
+"  "exec "!" . cmd
+"  "cexpr! system("cat " . tmp_file)
+"  "if (len(getqflist()) > 0)
+"  "  copen
+"  "endif
+"endfunction
+"cnoreabbrev bb :call BazelCmd()<cr>
+
 "------------------------------------------------------------}
 " YouCompleteMe Config
 "
@@ -281,3 +313,7 @@ nnoremap <C-f> :YcmCompleter GoTo<CR>
 cnoreabbrev gd Gdiff
 cnoreabbrev gs Gstatus
 cnoreabbrev gb Gblame
+
+" vim-autoformat stuff
+nnoremap ,x :Autoformat<CR>
+
