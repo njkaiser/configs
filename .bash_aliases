@@ -139,19 +139,6 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 # trim the directory portion of the prompt;
 PROMPT_DIRTRIM=3 # this only works in bash 4+
 
-alias cdl='cd_to_last_chronological_dir'
-function cd_to_last_chronological_dir {
-  latest_dir=''
-  for d in `ls -d */ | grep "^20......_......"`; do
-    if [ "$d" \> "$latest_dir" ]; then
-      latest_dir=$d
-    fi
-    # echo "$d"
-  done
-  echo "latest chronological directory: $latest_dir"
-  cd $latest_dir
-}
-
 # swap 2 filesnames in one command
 function swap()
 {
@@ -160,12 +147,3 @@ function swap()
   mv "$2" "$1"
   mv $TMPFILE "$2"
 }
-
-function make_pr() {
-  BRANCH=`git rev-parse --abbrev-ref HEAD`
-  echo ""
-  echo "https://git.zooxlabs.com/zooxco/driving/compare/develop/clams...$BRANCH"
-  echo ""
-}
-
-xset -dpms # fix stupid issues with expensive Dell Monitors and expensive graphics cards, both of which are expensive enough they shouldn't have stupid issues
