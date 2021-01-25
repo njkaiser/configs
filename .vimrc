@@ -84,7 +84,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'easymotion/vim-easymotion'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
 Plugin 'haya14busa/incsearch.vim'
@@ -157,10 +157,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " let g:UltiSnipsEditSplit="horizontal"
 
 " this prevents YCM from asking if the file is okay to load every time:
-let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-let g:ycm_enable_diagnostic_highlighting = 0
-let g:ycm_enable_diagnostic_signs = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+"let g:ycm_enable_diagnostic_highlighting = 0
+"let g:ycm_enable_diagnostic_signs = 0
+"let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " The g:ycm_key_list_select_completion option
 " This option controls the key mappings used to select the first completion string. Invoking any of them repeatedly cycles forward through the completion list.
@@ -201,10 +201,11 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " set airline theme:
+let g:airline_powerline_fonts=1
+let g:airline_theme='deus'
 " set encoding=utf-8
-" let g:airline_powerline_fonts=1
-" let g:airline_theme='deus'
 " set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+" set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 " Cardi B's source/header switching function, mapped to ",s"
 function! SwitchSourceHeader()
@@ -293,21 +294,21 @@ nnoremap ,u :call UpdateDeps()<cr>
 " YouCompleteMe Config
 "
 " Set this so that ycm can find python for my virtualenv
-let g:ycm_python_binary_path = 'python'
-" Set this for compilation flags
-" let g:ycm_global_ycm_extra_conf='~/.vim/ycm_config/cpp/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-" Set this to make ycm a syntastic checker
-let g:ycm_register_as_syntastic_checker=0
-" Set this to use CTags
-let g:ycm_collect_identifiers_from_tags_files=1
-let g:ycm_goto_buffer_command = 'horizontal-split'
+"let g:ycm_python_binary_path = 'python'
+"" Set this for compilation flags
+"" let g:ycm_global_ycm_extra_conf='~/.vim/ycm_config/cpp/.ycm_extra_conf.py'
+"let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
+"" Set this to make ycm a syntastic checker
+"let g:ycm_register_as_syntastic_checker=0
+"" Set this to use CTags
+"let g:ycm_collect_identifiers_from_tags_files=1
+"let g:ycm_goto_buffer_command = 'horizontal-split'
 "TODO these key mapping were making arrow keys do stupid things, fix them:
 " nnoremap <C-q> :YcmCompleter GoToDeclaration<CR>
 " nnoremap <C-w> :YcmCompleter GoToDefinition<CR>
-nnoremap <C-t> :YcmCompleter GetType<CR>
+"nnoremap <C-t> :YcmCompleter GetType<CR>
 " Jump to the definition of a macro or function:
-nnoremap <C-f> :YcmCompleter GoTo<CR>
+"nnoremap <C-f> :YcmCompleter GoTo<CR>
 
 " fugitive setup:
 cnoreabbrev gd Gdiff
@@ -317,3 +318,5 @@ cnoreabbrev gb Gblame
 " vim-autoformat stuff
 nnoremap ,x :Autoformat<CR>
 
+" airline color scheme does not play nice with Byobu out of the box:
+set term=screen-256color

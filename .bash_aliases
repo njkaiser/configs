@@ -29,7 +29,7 @@ alias ud='sudo apt-get update'
 alias ug='sudo apt-get upgrade'
 
 # alias to open a nautilus window at the current terminal's directory,
-# because, you know, sometimes GUIs are actually useful
+# because, you know, sometimes GUIs are actually useful.
 alias owd='nautilus $(pwd) &'
 
 # because source devel/setup.bash is way too much typing:
@@ -91,31 +91,19 @@ alias gssp='git stash show -p '
 alias gsp='git stash pop '
 alias gbv='git branch -v | cat'
 
-# why should I have to type out 'rosla'? way too many keystrokes...
-# alias rl='roslaunch '
-
 # tmux / byobu aliases:
 alias rnw='tmux movew -r'
 
 # useful command line aliases:
-alias f='find . -type f -iname '
-
-# why did I not do this earlier?
-# alias v='vim'
-
-# cd is hard
-# alias u='cd ..'
-# alias uu='cd ../..'
-# alias uuu='cd ../../..'
+function f() {
+  find . -type f -iname "$1" | cut -c3-
+}
 
 # prevent python interpreter from creating .pyc and .pyo files:
 PYTHONDONTWRITEBYTECODE=True
 export PYTHONDONTWRITEBYTECODE
 PYTHONSTARTUP=~/configs/.startup.py
 export PYTHONSTARTUP
-
-# source collection of useful custom packages
-# source /home/njk/nifty_nodes/ws/devel/setup.bash
 
 # set bash completion to be case insensitive (from Jarvis)
 bind 'set completion-ignore-case on'
