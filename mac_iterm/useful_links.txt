@@ -1,0 +1,5 @@
+list of byobu key bindings:
+https://cheatography.com/mikemikk/cheat-sheets/byobu-keybindings/
+
+how to add byobu key bindings to iterm:
+https://stackoverflow.com/questions/26180096/os-x-byobu-vertical-split
