@@ -64,6 +64,7 @@ set wildmode=longest,list " bash-like autocompletion
 " which is much less annoying/intrusive than :set colorcolumn=80.
 highlight ColorColumn ctermbg=DarkCyan
 call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%101v', 100)
 "To activate highlight:
 "nnoremap <C-c> :match Search '\%>80v.\+'<CR>
 "To deactivate it:

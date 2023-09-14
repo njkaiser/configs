@@ -113,16 +113,21 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=" -R "
 
 # could also use git's built-in function __git_ps1, but it gives no indication of clean or dirty
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit"* ]] && echo "*"
-}
+# function parse_git_dirty {
+#   [[ $(git status 2> /dev/null | tail -n1) != *"nothing to commit"* ]] && echo "*"
+# }
 
 function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+  # git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1]/"
 }
+
+# source ~/.git-prompt.sh # gives access to `__git_ps1`
 
 # add git branch/status information to shell prompt:
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;220m\]$(parse_git_branch)\[\033[00m\]\$ '
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;220m\]__git_ps1 "[%s]"\[\033[00m\]\$ '
+
 
 # trim the directory portion of the prompt;
 PROMPT_DIRTRIM=3 # this only works in bash 4+
