@@ -109,8 +109,8 @@ export PYTHONSTARTUP
 bind 'set completion-ignore-case on'
 
 # add syntax color and piping to less
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=" -R "
+export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
+export LESS=' -R '
 
 # could also use git's built-in function __git_ps1, but it gives no indication of clean or dirty
 # function parse_git_dirty {

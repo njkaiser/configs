@@ -15,8 +15,8 @@ cd ~/
 # fail if these files already exist (don't want to overwrite)
 ln -s ~/configs/.bash_aliases ~/.bash_aliases
 ln -s ~/configs/.gitignore_global ~/.gitignore_global
-ln -s ~/configs/.nanorc ~/.nanorc
-ln -s ~/configs/.tmux.conf ~/.tmux.conf
+# ln -s ~/configs/.nanorc ~/.nanorc
+# ln -s ~/configs/.tmux.conf ~/.tmux.conf
 ln -s ~/configs/.ycm_extra_conf.py ~/.ycm_extra_conf.py
 ln -s ~/configs/.vimrc ~/.vimrc
 ln -s ~/configs/.startup.py ~/startup.py
@@ -37,6 +37,8 @@ git config --global push.default current
 byobu
 byobu-disable-prompt
 exit
+
+echo "source /usr/share/doc/fzf/examples/key-bindings.bash" >> ~/.bashrc
 
 # set desktop background to most awesome picture in the world:
 # DIR="$HOME/Pictures"
