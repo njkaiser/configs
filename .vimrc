@@ -62,13 +62,9 @@ set wildmode=longest,list " bash-like autocompletion
 
 " Add background highlighting to characters at the 80th column,
 " which is much less annoying/intrusive than :set colorcolumn=80.
-highlight ColorColumn ctermbg=DarkCyan
-call matchadd('ColorColumn', '\%81v', 100)
-call matchadd('ColorColumn', '\%101v', 100)
-"To activate highlight:
-"nnoremap <C-c> :match Search '\%>80v.\+'<CR>
-"To deactivate it:
-"nnoremap <leader>2 :match none<CR>
+highlight ColorColumn ctermbg=Black
+autocmd FileType cpp,c,cxx,h,hpp,proto,markdown call matchadd('ColorColumn', '\%81v', 100)
+autocmd FileType python call matchadd('ColorColumn', '\%101v', 100)
 
 " support for roslaunch XML syntax:
 autocmd BufRead,BufNewFile *.launch setfiletype roslaunch

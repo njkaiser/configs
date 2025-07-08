@@ -27,8 +27,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # compile YouCompleteMe server (vim plugin) with C-family language support:
-sudo apt-get install -y clang
-./.vim/bundle/YouCompleteMe/install.py --clang-completer
+# sudo apt-get install -y clang
+# ./.vim/bundle/YouCompleteMe/install.py --clang-completer
 
 # TODO clone and insall all vim plugins here:
 git clone git@github.com:vim-airline/vim-airline.git .vim/bundle/
