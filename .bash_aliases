@@ -136,7 +136,8 @@ function parse_git_branch {
 # source ~/.git-prompt.sh # gives access to `__git_ps1`
 
 # add git branch/status information to shell prompt:
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;220m\]$(parse_git_branch)\[\033[00m\]\$ '
+# Color codes can be found at: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;97m\]$(parse_git_branch)\[\033[00m\]\$ '
 # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\e[38;5;220m\]__git_ps1 "[%s]"\[\033[00m\]\$ '
 
 
