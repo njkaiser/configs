@@ -152,3 +152,9 @@ function swap()
   mv "$2" "$1"
   mv $TMPFILE "$2"
 }
+
+# Single tab completion:
+bind 'set show-all-if-ambiguous on'
+
+# Screw having to reach for the shift key!
+bind 'set completion-ignore-case on'

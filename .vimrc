@@ -1,41 +1,6 @@
-" important stuff:
-imap kj <Esc>
-imap KJ <Esc>
-imap Kj <Esc>
-imap kJ <Esc>
-vmap kj <Esc>
-let mapleader = "\<Space>" 
-
-" syntax highlighting for protobufs (must copy contents of this file to ~/.vim/syntax/proto.vim:
-" https://github.com/protocolbuffers/protobuf/blob/master/editors/proto.vim)
-augroup filetype
-  au! BufRead,BufNewFile *.proto setfiletype proto
-augroup end
-
-" line movers:
-" noremap - ddp
-" noremap _ ddkP
-
-" Easier copy/paste between files
-vnoremap <C-c> :'<,'>w! /tmp/vimcopybuffer<CR>
-nnoremap <C-p> :r /tmp/vimcopybuffer<CR>
-
-" spaces are better than colons! Unless it's your real colon, then I suppose
-" you need it to poop.
-noremap <Leader><Leader>w :w<CR>
-nnoremap <Leader><Leader>q :q<CR>
-nnoremap <Leader><Leader>wq :wq<CR>
-nnoremap <Leader><Leader>qq :q!<CR>
-
-" arguably useful, if you're me:
-noremap <C-n> :set number!<CR>
-" noremap <ALT+p> :set invpaste paste?<CR>
-set showmode
-
-" Allow saving of files as sudo when I forgot to start vim using sudo
-cmap w!! w !sudo tee > /dev/null %
-
+" defaults:
 syntax on
+set showmode
 set number
 set autoindent
 set smartindent
@@ -44,6 +9,27 @@ set shiftwidth=2
 set expandtab
 set cursorline
 set smartcase
+
+" the most important 5 lines in this file:
+imap kj <Esc>
+imap KJ <Esc>
+imap Kj <Esc>
+imap kJ <Esc>
+vmap kj <Esc>
+
+" Easier copy/paste between files
+"vnoremap <C-c> :'<,'>w! /tmp/vimcopybuffer<CR>
+vnoremap <C-c> :w! /tmp/vimcopybuffer<CR>
+nnoremap <C-p> :r /tmp/vimcopybuffer<CR>
+
+let mapleader = "\<Space>" 
+
+" arguably useful, if you're me:
+noremap <C-n> :set number!<CR>
+" noremap <ALT+p> :set invpaste paste?<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo
+cmap w!! w !sudo tee > /dev/null %
 
 " Save undo file history (saves you if you accidentally delete a file)
 if !isdirectory($HOME."/.vim")
@@ -67,7 +53,13 @@ autocmd FileType cpp,c,cxx,h,hpp,proto,markdown call matchadd('ColorColumn', '\%
 autocmd FileType python call matchadd('ColorColumn', '\%101v', 100)
 
 " support for roslaunch XML syntax:
-autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
+" autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
+"
+" syntax highlighting for protobufs (must copy contents of this file to ~/.vim/syntax/proto.vim:
+" https://github.com/protocolbuffers/protobuf/blob/master/editors/proto.vim)
+" augroup filetype
+"   au! BufRead,BufNewFile *.proto setfiletype proto
+" augroup end
 
 filetype plugin indent on
 " THIS IS ALL FOR VUNDLE *****************************************
@@ -82,8 +74,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
+" Plugin 'SirVer/ultisnips'
+" Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'vim-airline/vim-airline'
@@ -92,19 +84,19 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'taketwo/vim-ros'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'Chiel92/vim-autoformat'
-let g:autoformat_verbosemode = 0
-"let g:autoformat_verbosemode = 1
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-let g:formatter_yapf_style = 'pep8'
-let g:formatdef_clangformat = "'clang-format-3.6 -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=file'"
-let g:formatdef_remark_markdown = '"remark --quiet --no-color --setting footnotes:true"'
-let g:formatdef_buildifier = '"buildifier --mode=fix"'
-let g:formatters_python = ['yapf']
-let g:formatters_bzl = ['yapf']
-let g:formatters_build = ['buildifier']
+" Plugin 'Chiel92/vim-autoformat'
+" let g:autoformat_verbosemode = 0
+" "let g:autoformat_verbosemode = 1
+" let g:autoformat_autoindent = 0
+" let g:autoformat_retab = 0
+" let g:autoformat_remove_trailing_spaces = 0
+" let g:formatter_yapf_style = 'pep8'
+" let g:formatdef_clangformat = "'clang-format-3.6 -lines='.a:firstline.':'.a:lastline.' --assume-filename=\"'.expand('%:p').'\" -style=file'"
+" let g:formatdef_remark_markdown = '"remark --quiet --no-color --setting footnotes:true"'
+" let g:formatdef_buildifier = '"buildifier --mode=fix"'
+" let g:formatters_python = ['yapf']
+" let g:formatters_bzl = ['yapf']
+" let g:formatters_build = ['buildifier']
 
 " *** all plugins must be added before the following line
 call vundle#end()         " required
@@ -179,7 +171,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " IncSearch config:
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
-map /  <Plug>(incsearch-forward)
+" map /  <Plug>(incsearch-forward)
 " map /  <Plug>(incsearch-stay)
 map <Leader>/ <Plug>(incsearch-easymotion-/)
 map ?  <Plug>(incsearch-backward)
@@ -200,9 +192,9 @@ map g# <Plug>(incsearch-nohl-g#)
 " set airline theme:
 let g:airline_powerline_fonts=1
 let g:airline_theme='deus'
-" set encoding=utf-8
-" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
-" set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set encoding=utf-8
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 " Cardi B's source/header switching function, mapped to ",s"
 function! SwitchSourceHeader()
@@ -260,15 +252,15 @@ endfunction
 nnoremap ,b :call GoToBuild()<CR>
 
 " Cardi B's script for updating BUILD files, mapped to ",u"
-function! UpdateDeps()
-  let l:fname=expand('%:p')
-  py3f /mnt/flashblade/carden/utils/update_deps_vim.py
-  call input('Press any key to continue')
-  redraw!
-  execute 'edit' l:fname
-endfunction
-" FUNCTION CALL FOR ABOVE
-nnoremap ,u :call UpdateDeps()<cr>
+" function! UpdateDeps()
+"   let l:fname=expand('%:p')
+"   py3f /mnt/flashblade/carden/utils/update_deps_vim.py
+"   call input('Press any key to continue')
+"   redraw!
+"   execute 'edit' l:fname
+" endfunction
+" " FUNCTION CALL FOR ABOVE
+" nnoremap ,u :call UpdateDeps()<cr>
 
 
 " TODO fix this so it actually works when I type :bb
@@ -313,7 +305,7 @@ cnoreabbrev gs Gstatus
 cnoreabbrev gb Gblame
 
 " vim-autoformat stuff
-nnoremap ,x :Autoformat<CR>
+" nnoremap ,x :Autoformat<CR>
 
 " airline color scheme does not play nice with Byobu out of the box:
-set term=screen-256color
+" set term=screen-256color

@@ -8,6 +8,7 @@ import time
 imports = [
     'datetime',
     'numpy as np',
+    'pandas as pd',
     'matplotlib.pyplot as plt',
     'os',
     'sys',

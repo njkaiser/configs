@@ -4,12 +4,12 @@ set -x
 cd ~/
 
 # add symlinks for necessary config files
-#rm ~/.bash_aliases;
-#rm ~/.gitignore_global;
+rm ~/.bash_aliases;
+rm ~/.gitignore_global;
 #rm ~/.nanorc;
 #rm ~/.tmux.conf;
 #rm ~/.ycm_extra_conf.py;
-#rm ~/.vimrc;
+rm ~/.vimrc;
 #rm ~/.startup.py;
 
 # fail if these files already exist (don't want to overwrite)
@@ -17,7 +17,7 @@ ln -s ~/configs/.bash_aliases ~/.bash_aliases
 ln -s ~/configs/.gitignore_global ~/.gitignore_global
 # ln -s ~/configs/.nanorc ~/.nanorc
 # ln -s ~/configs/.tmux.conf ~/.tmux.conf
-ln -s ~/configs/.ycm_extra_conf.py ~/.ycm_extra_conf.py
+# ln -s ~/configs/.ycm_extra_conf.py ~/.ycm_extra_conf.py
 ln -s ~/configs/.vimrc ~/.vimrc
 ln -s ~/configs/.startup.py ~/startup.py
 
@@ -38,9 +38,11 @@ byobu
 byobu-disable-prompt
 exit
 
-echo "source /usr/share/doc/fzf/examples/key-bindings.bash" >> ~/.bashrc
-
 # set desktop background to most awesome picture in the world:
 # DIR="$HOME/Pictures"
 # PIC="$DIR/sdoEquinox_0171_fixed.png"
 # gsettings set org.gnome.desktop.background picture-uri "file://$PIC"
+
+# Necessary for fzf command line mods to work
+echo '[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash' >> ~/.bashrc
+echo '[ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf' >> ~/.bashrc
