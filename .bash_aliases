@@ -116,9 +116,6 @@ export PYTHONDONTWRITEBYTECODE
 PYTHONSTARTUP=~/configs/.startup.py
 export PYTHONSTARTUP
 
-# set bash completion to be case insensitive (from Jarvis)
-bind 'set completion-ignore-case on'
-
 # add syntax color and piping to less
 export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 export LESS=' -R '
@@ -158,3 +155,82 @@ bind 'set show-all-if-ambiguous on'
 
 # Screw having to reach for the shift key!
 bind 'set completion-ignore-case on'
+
+# After each interactive command, prints: exit code, runtime, completion time.
+#   e.g.   ↳ exit 0 · 1.2s · 14:23:45
+# Implemented with a DEBUG trap (stamps the start time) + PROMPT_COMMAND
+# (reports once the command finishes). To remove, delete this whole block.
+#
+# Known limitation: a command line consisting solely of a subshell, e.g.
+# "(cd foo && make)", prints no line, because bash does not fire the DEBUG
+# trap for a bare subshell. Prefix it (";" or a grouping) if you want timing.
+if [[ $- == *i* ]]; then
+
+    # Runs FIRST in PROMPT_COMMAND: grab $? before anything else clobbers it.
+    __cmd_timer_save_exit() {
+        __cmd_timer_exit=$?
+        __cmd_timer_in_prompt=1
+    }
+
+    # DEBUG trap: stamp the start time once, at the start of each command line.
+    # Ignores the timer's own prompt hooks and anything else run from inside
+    # PROMPT_COMMAND, so pipelines and "a; b; c" are timed as a whole.
+    __cmd_timer_preexec() {
+        case $BASH_COMMAND in
+            __cmd_timer_save_exit|__cmd_timer_precmd) return ;;
+        esac
+        [[ -n $__cmd_timer_in_prompt || -n $__cmd_timer_start ]] && return
+        __cmd_timer_start=$EPOCHREALTIME
+    }
+
+    # Runs LAST in PROMPT_COMMAND: print the status line for the command.
+    __cmd_timer_precmd() {
+        local t0=$__cmd_timer_start
+        __cmd_timer_start=
+        __cmd_timer_in_prompt=
+        # Skip the first prompt (shell startup) so we don't report a phantom
+        # command; skip empty command lines (no start time was stamped).
+        if [[ -z $__cmd_timer_ready ]]; then __cmd_timer_ready=1; return; fi
+        [[ -z $t0 ]] && return
+
+        local end=$EPOCHREALTIME
+        # "seconds.microseconds" -> integer microseconds. Tolerates a ',' radix
+        # under non-C locales; 10# forces base-10 (the fraction has a leading
+        # zero that would otherwise be read as invalid octal).
+        local se=${end%[.,]*} ue=${end#*[.,]}
+        local ss=${t0%[.,]*} us=${t0#*[.,]}
+        [[ $end == "$se" ]] && ue=000000
+        [[ $t0 == "$ss" ]] && us=000000
+        local delta_us=$(( (10#$se - 10#$ss) * 1000000 + 10#$ue - 10#$us ))
+        (( delta_us < 0 )) && delta_us=0
+
+        local ms=$(( delta_us / 1000 )) dur
+        if (( ms < 1 )); then
+            dur="<1ms"
+        elif (( ms < 1000 )); then
+            dur="${ms}ms"
+        else
+            local s=$(( delta_us / 1000000 )) tenths=$(( (delta_us / 100000) % 10 ))
+            if   (( s < 60 ));   then dur="${s}.${tenths}s"
+            elif (( s < 3600 )); then dur="$(( s / 60 ))m$(( s % 60 ))s"
+            else                      dur="$(( s / 3600 ))h$(( (s % 3600) / 60 ))m$(( s % 60 ))s"
+            fi
+        fi
+
+        local ts; printf -v ts '%(%H:%M:%S)T' -1
+
+        if [[ -t 1 ]]; then
+            local reset=$'\e[0m' dim=$'\e[90m' col=$'\e[31m'
+            (( __cmd_timer_exit == 0 )) && col=$'\e[32m'
+            printf '%s\n' "${dim}↳ ${col}exit ${__cmd_timer_exit}${dim} · ${dur} · ${ts}${reset}"
+        else
+            printf '↳ exit %s · %s · %s\n' "$__cmd_timer_exit" "$dur" "$ts"
+        fi
+    }
+
+    trap '__cmd_timer_preexec' DEBUG
+    case ";${PROMPT_COMMAND};" in
+        *__cmd_timer_precmd*) : ;;   # already installed; don't double-wrap
+        *) PROMPT_COMMAND="__cmd_timer_save_exit${PROMPT_COMMAND:+; ${PROMPT_COMMAND}}; __cmd_timer_precmd" ;;
+    esac
+fi

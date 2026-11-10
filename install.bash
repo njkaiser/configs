@@ -13,8 +13,11 @@ sudo apt update
 # sudo apt-get install -y gitk
 
 # install byobu:
-sudo apt-get install -y byobu
-byobu-disable-prompt # replace byobu prompt with normal bash prompt
+# sudo apt-get install -y byobu
+# byobu-disable-prompt # replace byobu prompt with normal bash prompt
+
+# Source highlighting for less et al.
+sudo apt install source-highlight
 
 # install tree:
 sudo apt-get install -y tree

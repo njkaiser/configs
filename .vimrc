@@ -1,5 +1,6 @@
 " defaults:
 syntax on
+set background=light
 set showmode
 set number
 set autoindent
@@ -43,7 +44,6 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-
 set wildmode=longest,list " bash-like autocompletion
 
 " Add background highlighting to characters at the 80th column,
@@ -54,7 +54,7 @@ autocmd FileType python call matchadd('ColorColumn', '\%101v', 100)
 
 " support for roslaunch XML syntax:
 " autocmd BufRead,BufNewFile *.launch setfiletype roslaunch
-"
+
 " syntax highlighting for protobufs (must copy contents of this file to ~/.vim/syntax/proto.vim:
 " https://github.com/protocolbuffers/protobuf/blob/master/editors/proto.vim)
 " augroup filetype
@@ -74,8 +74,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
 Plugin 'easymotion/vim-easymotion'
 "Plugin 'Valloric/YouCompleteMe'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets' " snippets are not included with ultisnips by default
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'haya14busa/incsearch-easymotion.vim'
 Plugin 'vim-airline/vim-airline'
@@ -223,7 +223,6 @@ function! SwitchSourceHeader()
     endif
   endif
 endfunction
-" FUNCTION CALL FOR ABOVE
 nnoremap ,s :call SwitchSourceHeader()<CR>
 
 function! GoToBuild()
@@ -248,7 +247,6 @@ except Exception as e:
    print("Something went wrong: " + str(e))
 EOF
 endfunction
-" FUNCTION CALL FOR ABOVE
 nnoremap ,b :call GoToBuild()<CR>
 
 " Cardi B's script for updating BUILD files, mapped to ",u"
@@ -261,7 +259,6 @@ nnoremap ,b :call GoToBuild()<CR>
 " endfunction
 " " FUNCTION CALL FOR ABOVE
 " nnoremap ,u :call UpdateDeps()<cr>
-
 
 " TODO fix this so it actually works when I type :bb
 "" Lakshay's bazel build current taret from within vim, mapped to ":bb"
@@ -309,3 +306,84 @@ cnoreabbrev gb Gblame
 
 " airline color scheme does not play nice with Byobu out of the box:
 " set term=screen-256color
+
+" function! GitSha()
+"   " Capture the output of `git rev-parse HEAD` and remove trailing newline
+"   let l:sha = system('git rev-parse HEAD')
+"   let l:current_file_path = expand("%:p")
+"   return trim(l:sha) . l:current_file_path
+" endfunction
+
+"function! GithubLink()
+"  let l:startline = line("'<")
+"  let l:endline = line("'>")
+"  let l:git_sha = trim(system('git rev-parse HEAD'))
+"  let l:git_root = trim(system('git rev-parse --show-toplevel'))
+"  let l:current_file_full_path = expand("%:p")
+"  let l:current_file = substitute(l:current_file_full_path, l:git_root . "/", "", "")
+"  "let l:current_file = expand("%")
+"  "if getcmdline() == "'<,'>gh"
+"    echo "https://git.zooxlabs.com/zooxco/driving/blob/" . l:git_sha . "/" . l:current_file . "#L" . l:startline . "-L" . l:endline
+"  else
+"    echo "https://git.zooxlabs.com/zooxco/driving/blob/" . l:git_sha . "/" . l:current_file
+"  endif
+"  "elseif getcmdtype() == ":" && l:startline == line(".")
+"endfunction
+"cnoreabbrev gh :call GithubLink()<CR>
+"command gh call append(line('.'), 'https://git.zooxlabs.com/zooxco/driving/blob/master/'.expand('%').'#L'.line('.'))
+"command gh call GithubLink()<CR>
+
+function! GenerateGitHubLink() range
+  let l:repo_url = 'git.zooxlabs.com/zooxco/driving'
+
+  " Get absolute path of current file
+  let l:filepath = expand('%:p')
+
+  " Get git root
+  let l:git_root = systemlist('git rev-parse --show-toplevel')[0]
+
+  " Get file path relative to git root
+  let l:relpath = substitute(l:filepath, l:git_root . '/', '', '')
+
+  " Get current git commit SHA
+  let l:sha = systemlist('git rev-parse HEAD')[0]
+
+  " Determine if a visual selection or range is being used
+  let l:has_range = 0
+  if mode() ==# 'v' || mode() ==# 'V'
+    let l:start = line("'<")
+    let l:end = line("'>")
+    let l:has_range = 1
+  elseif a:firstline != a:lastline
+    let l:start = a:firstline
+    let l:end = a:lastline
+    let l:has_range = 1
+  endif
+
+  " Format line range if applicable
+  if l:has_range
+    if l:start == l:end
+      let l:line_part = '#L' . l:start
+    else
+      let l:line_part = '#L' . l:start . '-L' . l:end
+    endif
+  else
+    let l:line_part = ''
+  endif
+
+  " Build final GitHub link
+  let l:url = l:repo_url . '/blob/' . l:sha . '/' . l:relpath . l:line_part
+
+  " Copy to clipboard if available
+  if has('clipboard')
+    let @+ = l:url
+    echom 'Copied to clipboard: ' . l:url
+  else
+    echom l:url
+  endif
+endfunction
+
+command! -range=% GitHubLink call GenerateGitHubLink()
+"cabbrev gh GitHubLink
+cnoremap <expr> gh getcmdtype() == ':' && getcmdline() ==# 'gh' ? 'GitHubLink' : 'gh'
+nnoremap ,g :call GenerateGitHubLink()<cr>
