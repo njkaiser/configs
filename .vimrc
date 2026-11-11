@@ -170,6 +170,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " IncSearch config:
 set hlsearch
+set incsearch
 let g:incsearch#auto_nohlsearch = 1
 " map /  <Plug>(incsearch-forward)
 " map /  <Plug>(incsearch-stay)
